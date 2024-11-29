@@ -41,7 +41,6 @@ func update(points: Array) -> void:
 	_m.surface_add_vertex(points[1]+left*width)
 	_m.surface_add_vertex(points[0])
 	_m.surface_add_vertex(points[1]+right*width)
-	_m.surface_end()
 
 	# Draw body
 	for i in range(2, size):
@@ -49,19 +48,16 @@ func update(points: Array) -> void:
 		var nleft: Vector3 = ndir.rotated(Vector3(0, 0, 1), deg_to_rad(-90))
 		var nright: Vector3 = ndir.rotated(Vector3(0, 0, 1), deg_to_rad(90))
 		var nwidth: float = width + delta
-		_m.surface_begin(Mesh.PRIMITIVE_LINES)
 		_m.surface_add_vertex(points[i-1]+left*width)
 		_m.surface_add_vertex(points[i]+nleft*nwidth)
 		_m.surface_add_vertex(points[i-1]+right*width)
 		_m.surface_add_vertex(points[i]+nright*nwidth)
-		_m.surface_end()
 		dir = ndir
 		left = nleft
 		right = nright
 		width = nwidth
 
 	# Draw head
-	_m.surface_begin(Mesh.PRIMITIVE_LINES)
 	_m.surface_add_vertex(points[size-1]+left*width)
 	_m.surface_add_vertex(points[size-1]+dir*head_length)
 	_m.surface_add_vertex(points[size-1]+right*width)

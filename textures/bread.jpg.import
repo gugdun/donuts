@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bx78886y8118f"
 path.s3tc="res://.godot/imported/bread.jpg-1c51d043ab745e74e2d4180d3646f380.s3tc.ctex"
+path.etc2="res://.godot/imported/bread.jpg-1c51d043ab745e74e2d4180d3646f380.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://textures/bread.jpg"
-dest_files=["res://.godot/imported/bread.jpg-1c51d043ab745e74e2d4180d3646f380.s3tc.ctex"]
+dest_files=["res://.godot/imported/bread.jpg-1c51d043ab745e74e2d4180d3646f380.s3tc.ctex", "res://.godot/imported/bread.jpg-1c51d043ab745e74e2d4180d3646f380.etc2.ctex"]
 
 [params]
 

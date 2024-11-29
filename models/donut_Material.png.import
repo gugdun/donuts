@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dtncebfl8cb8l"
 path.s3tc="res://.godot/imported/donut_Material.png-e42866fcce81fe35df0955460a01e519.s3tc.ctex"
+path.etc2="res://.godot/imported/donut_Material.png-e42866fcce81fe35df0955460a01e519.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://models/donut_Material.png"
-dest_files=["res://.godot/imported/donut_Material.png-e42866fcce81fe35df0955460a01e519.s3tc.ctex"]
+dest_files=["res://.godot/imported/donut_Material.png-e42866fcce81fe35df0955460a01e519.s3tc.ctex", "res://.godot/imported/donut_Material.png-e42866fcce81fe35df0955460a01e519.etc2.ctex"]
 
 [params]
 
