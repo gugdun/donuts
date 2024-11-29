@@ -23,6 +23,7 @@ func get_dir() -> Vector3:
 
 func update(points: Array) -> void:
 	_m.clear_surfaces()
+
 	var size: int = points.size()
 	if size < 2:
 		collider.disabled = true
@@ -36,10 +37,16 @@ func update(points: Array) -> void:
 	var right: Vector3 = dir.rotated(Vector3(0, 0, 1), deg_to_rad(90))
 
 	# Draw tail
-	_m.surface_begin(Mesh.PRIMITIVE_LINES)
+	_m.surface_begin(Mesh.PRIMITIVE_TRIANGLES)
+
+	_m.surface_set_normal(Vector3(0,0,-1))
+	_m.surface_set_uv(Vector2(0.5,0))
 	_m.surface_add_vertex(points[0])
+	_m.surface_set_normal(Vector3(0,0,-1))
+	_m.surface_set_uv(Vector2(0,1))
 	_m.surface_add_vertex(points[1]+left*width)
-	_m.surface_add_vertex(points[0])
+	_m.surface_set_normal(Vector3(0,0,-1))
+	_m.surface_set_uv(Vector2(1,1))
 	_m.surface_add_vertex(points[1]+right*width)
 
 	# Draw body
@@ -48,20 +55,43 @@ func update(points: Array) -> void:
 		var nleft: Vector3 = ndir.rotated(Vector3(0, 0, 1), deg_to_rad(-90))
 		var nright: Vector3 = ndir.rotated(Vector3(0, 0, 1), deg_to_rad(90))
 		var nwidth: float = width + delta
+		
+		_m.surface_set_normal(Vector3(0,0,-1))
+		_m.surface_set_uv(Vector2(0,0))
 		_m.surface_add_vertex(points[i-1]+left*width)
+		_m.surface_set_normal(Vector3(0,0,-1))
+		_m.surface_set_uv(Vector2(0,1))
 		_m.surface_add_vertex(points[i]+nleft*nwidth)
+		_m.surface_set_normal(Vector3(0,0,-1))
+		_m.surface_set_uv(Vector2(1,0))
 		_m.surface_add_vertex(points[i-1]+right*width)
+
+		_m.surface_set_normal(Vector3(0,0,-1))
+		_m.surface_set_uv(Vector2(1,0))
+		_m.surface_add_vertex(points[i-1]+right*width)
+		_m.surface_set_normal(Vector3(0,0,-1))
+		_m.surface_set_uv(Vector2(0,1))
+		_m.surface_add_vertex(points[i]+nleft*nwidth)
+		_m.surface_set_normal(Vector3(0,0,-1))
+		_m.surface_set_uv(Vector2(1,1))
 		_m.surface_add_vertex(points[i]+nright*nwidth)
+		
 		dir = ndir
 		left = nleft
 		right = nright
 		width = nwidth
 
 	# Draw head
+	_m.surface_set_normal(Vector3(0,0,-1))
+	_m.surface_set_uv(Vector2(0,0))
 	_m.surface_add_vertex(points[size-1]+left*width)
+	_m.surface_set_normal(Vector3(0,0,-1))
+	_m.surface_set_uv(Vector2(0.5,1))
 	_m.surface_add_vertex(points[size-1]+dir*head_length)
+	_m.surface_set_normal(Vector3(0,0,-1))
+	_m.surface_set_uv(Vector2(1,0))
 	_m.surface_add_vertex(points[size-1]+right*width)
-	_m.surface_add_vertex(points[size-1]+dir*head_length)
+
 	_m.surface_end()
 
 	# Move collider

@@ -1,8 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://dyldi8104486i"]
 
 [ext_resource type="Script" path="res://scripts/trail.gd" id="1_6m7tu"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3yl2q"]
+[ext_resource type="Material" uid="uid://dwef75ccsbyhi" path="res://materials/trail.tres" id="2_kfhw7"]
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_aiw44"]
 
@@ -22,7 +21,7 @@ transform_mesh = NodePath("transform")
 collider = NodePath("shape")
 
 [node name="trail" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_3yl2q")
+material_override = ExtResource("2_kfhw7")
 cast_shadow = 0
 mesh = SubResource("ImmediateMesh_aiw44")
 
