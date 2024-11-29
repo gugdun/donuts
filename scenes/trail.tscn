@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://dyldi8104486i"]
+
+[ext_resource type="Script" path="res://scripts/trail.gd" id="1_6m7tu"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3yl2q"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_aiw44"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ksfn8"]
+radius = 0.0104801
+
+[sub_resource type="BoxMesh" id="BoxMesh_0l6mc"]
+
+[node name="staticbody" type="StaticBody3D" node_paths=PackedStringArray("mesh_instance", "transform_mesh", "collider")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_6m7tu")
+mesh_instance = NodePath("trail")
+transform_mesh = NodePath("transform")
+collider = NodePath("shape")
+
+[node name="trail" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_3yl2q")
+cast_shadow = 0
+mesh = SubResource("ImmediateMesh_aiw44")
+
+[node name="shape" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ksfn8")
+
+[node name="transform" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.017, 0, 0, 0, 0.038, 0, 0, 0)
+layers = 0
+mesh = SubResource("BoxMesh_0l6mc")
