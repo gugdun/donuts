@@ -11,11 +11,11 @@ func _ready() -> void:
 func increment(amount: int = 1):
 	score += amount
 	update_score_label()
-	print("Current score: ", score)
 
 func reset():
 	score = 0
-	print("Score reset")
+	update_score_label()
+	
 
 func update_score_label() -> void:
 	text = "Score: " + str(score)
