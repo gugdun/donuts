@@ -1,13 +1,8 @@
-[gd_scene load_steps=10 format=4 uid="uid://c68xoboemdf7w"]
+[gd_scene load_steps=9 format=4 uid="uid://c68xoboemdf7w"]
 
 [ext_resource type="Script" path="res://scripts/donut.gd" id="1_3rdtm"]
-[ext_resource type="Texture2D" uid="uid://bx78886y8118f" path="res://textures/bread.jpg" id="2_76vny"]
+[ext_resource type="Material" uid="uid://nyoig2p86lbu" path="res://materials/donut_cut.tres" id="2_ake7c"]
 [ext_resource type="Texture2D" uid="uid://dtncebfl8cb8l" path="res://models/donut_Material.png" id="3_vbt3b"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mev5"]
-albedo_texture = ExtResource("2_76vny")
-metallic_specular = 0.0
-uv1_scale = Vector3(5, 5, 5)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mmubx"]
 radius = 0.0780875
@@ -58,7 +53,7 @@ radius = 0.106689
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_3rdtm")
-cut_material = SubResource("StandardMaterial3D_5mev5")
+cut_material = ExtResource("2_ake7c")
 mesh_instance = NodePath("mesh")
 collider = NodePath("shape")
 
