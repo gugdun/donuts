@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://kukr7yuoefbq"]
+[gd_scene load_steps=6 format=3 uid="uid://kukr7yuoefbq"]
 
 [ext_resource type="PackedScene" uid="uid://dl5miopsl5xpv" path="res://scenes/spawner.tscn" id="1_aygvt"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ybh72"]
 [ext_resource type="PackedScene" uid="uid://dyldi8104486i" path="res://scenes/trail.tscn" id="3_nnxak"]
 [ext_resource type="PackedScene" uid="uid://dmhnak5hwtqcb" path="res://scenes/destroyer.tscn" id="4_pxjyh"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="5_gjvsx"]
 
 [node name="game" type="Node3D" node_paths=PackedStringArray("camera", "trail")]
 script = ExtResource("1_ybh72")
@@ -50,3 +51,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="destroyer" parent="." instance=ExtResource("4_pxjyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+
+[node name="score" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+script = ExtResource("5_gjvsx")
