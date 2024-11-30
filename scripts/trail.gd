@@ -7,6 +7,7 @@ extends StaticBody3D
 @export var mesh_instance: MeshInstance3D
 @export var transform_mesh: MeshInstance3D
 @export var collider: CollisionShape3D
+@export var game: Game
 
 var _m: ImmediateMesh
 var _pos: Vector3

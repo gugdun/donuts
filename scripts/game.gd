@@ -1,9 +1,12 @@
+class_name Game
+
 extends Node3D
 
 @export var max_points: int = 5
 @export var pop_timeout: float = 0.1
 @export var camera: Camera3D
 @export var trail: Trail
+@export var score: Score
 
 var pressed: bool = false
 var points: Array[Vector3] = []

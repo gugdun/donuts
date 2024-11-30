@@ -5,7 +5,6 @@ extends RigidBody3D
 @export var cut_material: Material
 @export var mesh_instance: MeshInstance3D
 @export var collider: CollisionShape3D
-@export var score: Score
 
 const slice_force: float = 50
 
@@ -32,8 +31,7 @@ func body_entered(body: Node) -> void:
 			apply_force(dir * slice_force)
 			call_deferred("disable_collider")
 			mesh_instance.mesh = meshes[0]
-			if score:
-					score.increment(1)
+			body.game.score.increment(1)
 			if meshes.size() > 1:
 				var new_donut = duplicate()
 				new_donut.set_slicer(_slicer)
