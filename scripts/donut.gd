@@ -8,11 +8,7 @@ extends RigidBody3D
 
 const slice_force: float = 50
 
-var _slicer: MeshSlicer
 var _sliceable: bool = true
-
-func set_slicer(slicer: MeshSlicer) -> void:
-	_slicer = slicer
 
 func set_sliceable(val: bool) -> void:
 	_sliceable = val
@@ -24,7 +20,10 @@ func body_entered(body: Node) -> void:
 	if body is Destroyer:
 		queue_free()
 	elif body is Trail and _sliceable:
-		var meshes: Array[ArrayMesh] = _slicer.slice_mesh(body.transform_mesh.transform, mesh_instance.mesh, cut_material)
+		var meshes: Array[ArrayMesh] = body.get_slicer().slice_mesh(
+			body.transform_mesh.transform,
+			mesh_instance.mesh,
+			cut_material)
 		if meshes.size() > 0:
 			var dir: Vector3 = body.get_dir().rotated(Vector3(0, 0, 1), deg_to_rad(90))
 			set_sliceable(false)
@@ -34,7 +33,6 @@ func body_entered(body: Node) -> void:
 			body.game.score.increment(1)
 			if meshes.size() > 1:
 				var new_donut = duplicate()
-				new_donut.set_slicer(_slicer)
 				new_donut.set_sliceable(false)
 				new_donut.apply_force(-dir * slice_force)
 				new_donut.mesh_instance.mesh = meshes[1]

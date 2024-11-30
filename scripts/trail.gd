@@ -9,18 +9,24 @@ extends StaticBody3D
 @export var collider: CollisionShape3D
 @export var game: Game
 
+var _slicer: MeshSlicer
 var _m: ImmediateMesh
 var _pos: Vector3
 var _dir: Vector3
 
 func _ready() -> void:
+	_slicer = MeshSlicer.new()
 	_m = mesh_instance.mesh as ImmediateMesh
+	add_child(_slicer)
 
 func get_pos() -> Vector3:
 	return _pos
 
 func get_dir() -> Vector3:
 	return _dir
+
+func get_slicer() -> MeshSlicer:
+	return _slicer
 
 func update(points: Array) -> void:
 	_m.clear_surfaces()
