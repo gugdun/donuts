@@ -1,9 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://kukr7yuoefbq"]
+[gd_scene load_steps=7 format=3 uid="uid://kukr7yuoefbq"]
 
 [ext_resource type="PackedScene" uid="uid://dl5miopsl5xpv" path="res://scenes/spawner.tscn" id="1_aygvt"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ybh72"]
 [ext_resource type="PackedScene" uid="uid://dyldi8104486i" path="res://scenes/trail.tscn" id="3_nnxak"]
 [ext_resource type="PackedScene" uid="uid://dmhnak5hwtqcb" path="res://scenes/destroyer.tscn" id="4_pxjyh"]
+[ext_resource type="Script" path="res://scripts/score.gd" id="5_gjvsx"]
+[ext_resource type="Script" path="res://scripts/reset_scope.gd" id="6_ksgev"]
 
 [node name="game" type="Node3D" node_paths=PackedStringArray("camera", "trail")]
 script = ExtResource("1_ybh72")
@@ -50,3 +52,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="destroyer" parent="." instance=ExtResource("4_pxjyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+
+[node name="score" type="Label" parent="."]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 73.0
+offset_bottom = 43.0
+script = ExtResource("5_gjvsx")
+
+[node name="reset_scope" type="Button" parent="."]
+offset_left = 20.0
+offset_top = 60.0
+offset_right = 74.0
+offset_bottom = 96.0
+text = "RESET"
+script = ExtResource("6_ksgev")
+
+[connection signal="pressed" from="reset_scope" to="reset_scope" method="_on_pressed"]
