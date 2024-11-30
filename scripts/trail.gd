@@ -28,7 +28,7 @@ func get_dir() -> Vector3:
 func get_slicer() -> MeshSlicer:
 	return _slicer
 
-func update(points: Array) -> void:
+func update(points: Array, pressed: bool) -> void:
 	_m.clear_surfaces()
 
 	var size: int = points.size()
@@ -103,7 +103,7 @@ func update(points: Array) -> void:
 
 	# Move collider
 	collider.position = points[size-1]
-	collider.disabled = false
+	collider.disabled = !pressed
 	transform_mesh.position = points[size-1]
 	var target: Vector3 = transform_mesh.position+dir.rotated(Vector3(0,0,1),deg_to_rad(90))
 	if abs(dir.y) > 0.01:

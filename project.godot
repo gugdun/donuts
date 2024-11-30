@@ -13,7 +13,12 @@ config_version=5
 config/name="Donuts"
 run/main_scene="res://scenes/game.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
+run/max_fps=300
 config/icon="res://textures/icon.svg"
+
+[display]
+
+window/vsync/vsync_mode=0
 
 [physics]
 
