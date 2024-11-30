@@ -105,7 +105,7 @@ func update(points: Array, pressed: bool) -> void:
 	collider.position = points[size-1]
 	collider.disabled = !pressed
 	transform_mesh.position = points[size-1]
-	var target: Vector3 = transform_mesh.position+dir.rotated(Vector3(0,0,1),deg_to_rad(90))
+	var target: Vector3 = transform_mesh.position+dir.rotated(Vector3(1,0,1).normalized(),deg_to_rad(90))
 	if abs(dir.y) > 0.01:
 		transform_mesh.look_at(target)
 	_pos = points[size-1]

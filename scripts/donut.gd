@@ -25,7 +25,7 @@ func body_entered(body: Node) -> void:
 			mesh_instance.mesh,
 			cut_material)
 		if meshes.size() > 0:
-			var dir: Vector3 = body.get_dir().rotated(Vector3(0, 0, 1), deg_to_rad(90))
+			var dir: Vector3 = body.get_dir().rotated(Vector3(1, 0, 1).normalized(), deg_to_rad(90))
 			set_sliceable(false)
 			apply_force(dir * slice_force)
 			call_deferred("disable_collider")

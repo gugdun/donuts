@@ -12,6 +12,6 @@ func _ready() -> void:
 func spawn() -> void:
 	var inst: Donut = donut.instantiate()
 	var rand: Vector3 = Vector3(randf() * angular_speed * 2.0 - angular_speed, 0, 0)
-	inst.angular_velocity = Vector3(randf() * angular_velocity, randf() * angular_velocity, 0)
+	inst.angular_velocity = Vector3(randf() * angular_velocity, randf() * angular_velocity, randf() * angular_velocity)
 	add_child(inst)
 	inst.apply_force(Vector3.UP * force + rand)
