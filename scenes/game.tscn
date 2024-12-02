@@ -1,10 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://kukr7yuoefbq"]
+[gd_scene load_steps=8 format=3 uid="uid://kukr7yuoefbq"]
 
 [ext_resource type="PackedScene" uid="uid://dl5miopsl5xpv" path="res://scenes/spawner.tscn" id="1_aygvt"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ybh72"]
 [ext_resource type="PackedScene" uid="uid://dyldi8104486i" path="res://scenes/trail.tscn" id="3_nnxak"]
 [ext_resource type="PackedScene" uid="uid://dmhnak5hwtqcb" path="res://scenes/destroyer.tscn" id="4_pxjyh"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="5_gjvsx"]
+[ext_resource type="Script" path="res://scripts/game_state.gd" id="6_8jga8"]
+
+[sub_resource type="GDScript" id="GDScript_60wcl"]
+script/source = "extends CanvasLayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
 
 [node name="game" type="Node3D" node_paths=PackedStringArray("camera", "trail", "score")]
 script = ExtResource("1_ybh72")
@@ -45,7 +60,7 @@ sky_mode = 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 projection = 1
 
-[node name="spawner" parent="." instance=ExtResource("1_aygvt")]
+[node name="spawner1" parent="." instance=ExtResource("1_aygvt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 
 [node name="trail" parent="." node_paths=PackedStringArray("game") instance=ExtResource("3_nnxak")]
@@ -62,11 +77,61 @@ offset_bottom = 43.0
 text = "0"
 script = ExtResource("5_gjvsx")
 
-[node name="reset_scope" type="Button" parent="."]
+[node name="reset" type="Button" parent="."]
+process_mode = 3
 offset_left = 20.0
 offset_top = 60.0
-offset_right = 74.0
+offset_right = 80.0
 offset_bottom = 96.0
 text = "RESET"
 
-[connection signal="pressed" from="reset_scope" to="score" method="reset"]
+[node name="menu" type="Button" parent="."]
+process_mode = 3
+offset_left = 20.0
+offset_top = 180.0
+offset_right = 80.0
+offset_bottom = 216.0
+text = "MENU
+"
+
+[node name="pause" type="Button" parent="."]
+process_mode = 3
+offset_left = 20.0
+offset_top = 120.0
+offset_right = 80.0
+offset_bottom = 156.0
+text = "PAUSE
+"
+
+[node name="MainMenu" type="CanvasLayer" parent="."]
+process_mode = 3
+script = SubResource("GDScript_60wcl")
+
+[node name="background" type="ColorRect" parent="MainMenu"]
+offset_right = 1177.0
+offset_bottom = 685.0
+color = Color(0.314316, 0.314316, 0.314316, 1)
+
+[node name="menu" type="Label" parent="MainMenu"]
+offset_left = 525.0
+offset_top = 52.0
+offset_right = 636.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 40
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="start" type="Button" parent="MainMenu"]
+offset_left = 69.0
+offset_top = 100.0
+offset_right = 213.0
+offset_bottom = 178.0
+text = "Start"
+script = ExtResource("6_8jga8")
+
+[connection signal="pressed" from="reset" to="score" method="reset"]
+[connection signal="pressed" from="menu" to="." method="_open_menu"]
+[connection signal="pressed" from="pause" to="." method="_pause_game"]
+[connection signal="visibility_changed" from="MainMenu" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MainMenu/start" to="." method="_start_game"]

@@ -32,5 +32,26 @@ func _input(event: InputEvent) -> void:
 	elif pressed and event is InputEventMouseMotion:
 		var projected: Vector3 = camera.project_position(event.position, 1)
 		points.append(projected)
-		if points.size() > max_points:
+	if points.size() > max_points:
 			points.pop_front()
+
+func _start_game() -> void:
+	print("Start GAME")
+	GameState.set_state(GameState.State.PLAYING)
+	$MainMenu.visible = false
+	return
+
+func _pause_game() -> void:
+	if(GameState.current_state == 2):
+		GameState.set_state(GameState.State.PLAYING)
+		get_tree().paused = false
+	else:
+		GameState.set_state(GameState.State.PAUSED)
+		get_tree().paused = true
+	return
+	
+func _open_menu() -> void:
+	GameState.set_state(GameState.State.IDLE)
+	$MainMenu.visible = true
+	score.reset()
+	return
