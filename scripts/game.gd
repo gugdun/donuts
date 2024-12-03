@@ -38,6 +38,7 @@ func _input(event: InputEvent) -> void:
 
 func _start_game() -> void:
 	GameState.set_state(GameState.State.PLAYING)
+	get_tree().paused = false
 	$main_menu.visible = false
 	return
 
