@@ -1,6 +1,6 @@
 extends Node
 
-enum State { IDLE, PLAYING, PAUSED, GAME_OVER }
+enum State {IDLE, PLAYING, PAUSED, GAME_OVER}
 
 
 var current_state = State.IDLE

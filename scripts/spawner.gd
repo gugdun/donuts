@@ -10,7 +10,7 @@ func _ready() -> void:
 	timer.start()
 	
 func spawn() -> void:
-	if(GameState.current_state != 1):
+	if (GameState.current_state != GameState.State.PLAYING):
 		return
 	var inst: Donut = donut.instantiate()
 	var rand: Vector3 = Vector3(randf() * angular_speed * 2.0 - angular_speed, 0, 0)
