@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhyqrm80u08wx"]
+
+[ext_resource type="Script" path="res://scripts/hp_container.gd" id="1_lsnrr"]
+
+[node name="HP_Container" type="HBoxContainer"]
+layout_direction = 3
+anchors_preset = -1
+anchor_left = 0.015
+anchor_top = 0.022
+anchor_right = 0.015
+anchor_bottom = 0.022
+offset_left = -0.280001
+offset_top = -0.256001
+offset_right = 123.72
+offset_bottom = 36.744
+size_flags_horizontal = 8
+size_flags_vertical = 0
+size_flags_stretch_ratio = 2.0
+theme_override_constants/separation = 10
+script = ExtResource("1_lsnrr")
+metadata/_edit_use_anchors_ = true

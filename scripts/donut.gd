@@ -39,3 +39,7 @@ func body_entered(body: Node) -> void:
 				get_parent().add_child(new_donut)
 				new_donut.call_deferred("disable_collider")
 	
+
+func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
+	if _sliceable:
+		SignalManager.donutLost.emit()
