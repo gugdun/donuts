@@ -5,13 +5,12 @@ extends HBoxContainer
 
 signal you_died
 
-func _ready():
-	setup_health_points(max_health)
-
-func setup_health_points(max_hp: int):
-	for i in range(max_hp):
-		var healt_point = health_point.instantiate()
-		add_child(healt_point)
+func setup_health_points():
+	for c in get_children():
+		c.queue_free()
+	for i in range(max_health):
+		var health_instance = health_point.instantiate()
+		call_deferred("add_child", health_instance)
 
 func decrease_health():
 	if self.get_child_count() > 0:
