@@ -6,7 +6,6 @@ class_name Score
 
 func _ready() -> void:
 	update_score_label()
-	
 
 func increment(amount: int = 1):
 	score += amount
@@ -15,7 +14,6 @@ func increment(amount: int = 1):
 func reset():
 	score = 0
 	update_score_label()
-	
 
 func update_score_label() -> void:
 	text = "Score: " + str(score)

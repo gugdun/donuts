@@ -16,6 +16,5 @@ func spawn() -> void:
 	add_child(inst)
 	inst.apply_force(Vector3.UP * force + rand)
 
-
 func _on_hp_container_you_died():
 	timer.stop() 

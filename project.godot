@@ -16,10 +16,6 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 run/max_fps=300
 config/icon="res://textures/icon.svg"
 
-[autoload]
-
-SignalManager="*res://scripts/signal_manager.gd"
-
 [display]
 
 window/vsync/vsync_mode=0

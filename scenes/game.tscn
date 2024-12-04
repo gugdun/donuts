@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://kukr7yuoefbq"]
+[gd_scene load_steps=8 format=3 uid="uid://kukr7yuoefbq"]
 
 [ext_resource type="PackedScene" uid="uid://dl5miopsl5xpv" path="res://scenes/spawner.tscn" id="1_aygvt"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ybh72"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://dmhnak5hwtqcb" path="res://scenes/destroyer.tscn" id="4_pxjyh"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="5_gjvsx"]
 [ext_resource type="PackedScene" path="res://scenes/hp_container.tscn" id="6_n65nv"]
+[ext_resource type="PackedScene" path="res://scenes/health_point.tscn" id="7_5yfvh"]
 
 [node name="game" type="Node3D" node_paths=PackedStringArray("camera", "trail", "score")]
 script = ExtResource("1_ybh72")
@@ -74,6 +75,8 @@ text = "RESET"
 unique_name_in_owner = true
 offset_left = -0.999969
 offset_right = -0.999969
+health_point = ExtResource("7_5yfvh")
 
+[connection signal="donut_destroyed" from="destroyer" to="hp_container" method="decrease_health"]
 [connection signal="pressed" from="reset_scope" to="score" method="reset"]
 [connection signal="you_died" from="hp_container" to="spawner" method="_on_hp_container_you_died"]
