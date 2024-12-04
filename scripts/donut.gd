@@ -38,4 +38,3 @@ func body_entered(body: Node) -> void:
 				new_donut.mesh_instance.mesh = meshes[1]
 				get_parent().add_child(new_donut)
 				new_donut.call_deferred("disable_collider")
-	

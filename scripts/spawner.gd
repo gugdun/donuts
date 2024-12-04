@@ -17,3 +17,6 @@ func spawn() -> void:
 	inst.angular_velocity = Vector3(randf() * angular_velocity, randf() * angular_velocity, randf() * angular_velocity)
 	add_child(inst)
 	inst.apply_force(Vector3.UP * force + rand)
+
+func _on_hp_container_you_died():
+	timer.stop() 

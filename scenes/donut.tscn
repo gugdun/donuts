@@ -72,4 +72,8 @@ collision_mask = 2
 [node name="shape" type="CollisionShape3D" parent="area"]
 shape = SubResource("SphereShape3D_je7q2")
 
+[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
+transform = Transform3D(0.109505, 0, 0, 0, 0.102525, 0, 0, 0, 0.0430074, 0, 0, 0)
+
 [connection signal="body_entered" from="area" to="." method="body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]
