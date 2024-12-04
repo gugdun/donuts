@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://kukr7yuoefbq"]
+[gd_scene load_steps=7 format=3 uid="uid://kukr7yuoefbq"]
 
 [ext_resource type="PackedScene" uid="uid://dl5miopsl5xpv" path="res://scenes/spawner.tscn" id="1_aygvt"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ybh72"]
 [ext_resource type="PackedScene" uid="uid://dyldi8104486i" path="res://scenes/trail.tscn" id="3_nnxak"]
 [ext_resource type="PackedScene" uid="uid://dmhnak5hwtqcb" path="res://scenes/destroyer.tscn" id="4_pxjyh"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="5_gjvsx"]
+[ext_resource type="PackedScene" uid="uid://c68xoboemdf7w" path="res://scenes/donut.tscn" id="6_i0elt"]
 
 [node name="game" type="Node3D" node_paths=PackedStringArray("camera", "trail", "score")]
 script = ExtResource("1_ybh72")
@@ -36,6 +37,7 @@ sky_mode = 1
 
 [node name="sun4" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.649519, 0.587019, 0.483253, -0.433013, 0.808013, -0.399519, -0.625, 0.0502405, 0.779007, 0, 2, 2)
+visible = false
 light_color = Color(1, 0.804235, 0.763382, 1)
 light_energy = 0.5
 light_bake_mode = 0
@@ -68,5 +70,8 @@ offset_top = 60.0
 offset_right = 74.0
 offset_bottom = 96.0
 text = "RESET"
+
+[node name="rigidbody" parent="." instance=ExtResource("6_i0elt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 0)
 
 [connection signal="pressed" from="reset_scope" to="score" method="reset"]

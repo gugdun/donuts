@@ -26,7 +26,6 @@ window/vsync/vsync_mode=0
 
 [rendering]
 
-renderer/rendering_method="gl_compatibility"
-renderer/rendering_method.mobile="gl_compatibility"
+renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(1, 0.830291, 0.780731, 1)
