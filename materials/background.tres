@@ -1,6 +1,7 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://uchdk6idmqwl"]
 
-[ext_resource type="Texture2D" uid="uid://vfygw84k8371" path="res://textures/v960-ning-05.jpg" id="1_n8kvv"]
+[ext_resource type="Texture2D" uid="uid://2h6ygp050c3a" path="res://textures/v960-ning-05.png" id="1_eae81"]
 
 [resource]
-albedo_texture = ExtResource("1_n8kvv")
+shading_mode = 2
+albedo_texture = ExtResource("1_eae81")

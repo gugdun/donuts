@@ -6,9 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://c35pipvpolff" path="res://models/donut_half.glb" id="4_ugwxx"]
 
 [node name="rigidbody" type="RigidBody3D" node_paths=PackedStringArray("donut", "left_half", "right_half")]
-process_thread_group = 2
-process_thread_group_order = 0
-process_thread_messages = 0
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_3rdtm")

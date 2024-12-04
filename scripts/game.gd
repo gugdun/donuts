@@ -19,7 +19,7 @@ func _process(delta: float) -> void:
 	if timeout >= pop_timeout and !points.is_empty():
 		points.pop_front()
 		timeout = 0
-		trail.update(points, pressed)
+	trail.update(points, pressed)
 	
 
 func _input(event: InputEvent) -> void:
@@ -33,7 +33,7 @@ func _input(event: InputEvent) -> void:
 	elif pressed and event is InputEventMouseMotion:
 		var projected: Vector3 = camera.project_position(event.position, 1)
 		points.append(projected)
-	if points.size() > max_points:
+		if points.size() > max_points:
 			points.pop_front()
 
 func _start_game() -> void:
