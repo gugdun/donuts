@@ -2,9 +2,7 @@ class_name Donut
 
 extends RigidBody3D
 
-@export var cut_material: Material
-@export var mesh_instance: MeshInstance3D
-@export var collider: CollisionShape3D
+@export var cut_mesh: CSGBox3D
 
 const slice_force: float = 50
 
@@ -13,28 +11,30 @@ var _sliceable: bool = true
 func set_sliceable(val: bool) -> void:
 	_sliceable = val
 
-func disable_collider() -> void:
-	collider.disabled = true
-
 func body_entered(body: Node) -> void:
 	if body is Destroyer:
 		queue_free()
 	elif body is Trail and _sliceable:
-		var meshes: Array[ArrayMesh] = body.get_slicer().slice_mesh(
-			body.transform_mesh.transform,
-			mesh_instance.mesh,
-			cut_material)
-		if meshes.size() > 0:
-			var dir: Vector3 = body.get_dir().rotated(Vector3(1, 0, 1).normalized(), deg_to_rad(90))
-			set_sliceable(false)
-			apply_force(dir * slice_force)
-			call_deferred("disable_collider")
-			mesh_instance.mesh = meshes[0]
-			body.game.score.increment(1)
-			if meshes.size() > 1:
-				var new_donut = duplicate()
-				new_donut.set_sliceable(false)
-				new_donut.apply_force(-dir * slice_force)
-				new_donut.mesh_instance.mesh = meshes[1]
-				get_parent().add_child(new_donut)
-				new_donut.call_deferred("disable_collider")
+		var trail: Trail = body as Trail
+		trail.game.score.increment()
+		_slice(trail)
+
+func _slice(trail: Trail):
+	# Cut self
+	cut_mesh.global_position = trail.cut1.global_position
+	cut_mesh.global_rotation = trail.cut1.global_rotation
+	cut_mesh.visible = true
+	set_sliceable(false)
+
+	# Spawn second half
+	var new_donut: Donut = duplicate()
+	trail.game.add_child(new_donut)
+	new_donut.global_position = global_position
+	new_donut.cut_mesh.global_position = trail.cut2.global_position
+	new_donut.cut_mesh.global_rotation = trail.cut2.global_rotation
+	new_donut.cut_mesh.visible = true
+	new_donut.set_sliceable(false)
+
+	# Apply force to separate halfs
+	apply_force(trail.get_dir() * slice_force)
+	new_donut.apply_force(-trail.get_dir() * slice_force)

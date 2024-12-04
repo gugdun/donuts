@@ -10,14 +10,16 @@ radius = 0.0104801
 
 [sub_resource type="BoxMesh" id="BoxMesh_0l6mc"]
 
-[node name="staticbody" type="StaticBody3D" node_paths=PackedStringArray("mesh_instance", "transform_mesh", "collider")]
+[node name="staticbody" type="StaticBody3D" node_paths=PackedStringArray("mesh_instance", "cut", "cut1", "cut2", "collider")]
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_6m7tu")
 head_length = 0.025
 head_width = 0.015
 mesh_instance = NodePath("trail")
-transform_mesh = NodePath("transform")
+cut = NodePath("cuts")
+cut1 = NodePath("cuts/cut1")
+cut2 = NodePath("cuts/cut2")
 collider = NodePath("shape")
 
 [node name="trail" type="MeshInstance3D" parent="."]
@@ -28,7 +30,16 @@ mesh = SubResource("ImmediateMesh_aiw44")
 [node name="shape" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ksfn8")
 
-[node name="transform" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.1, 0, 0, 0, 0.017, 0, 0, 0, 0.038, 0, 0, 0)
+[node name="cuts" type="Node3D" parent="."]
+
+[node name="cut1" type="MeshInstance3D" parent="cuts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 layers = 0
 mesh = SubResource("BoxMesh_0l6mc")
+skeleton = NodePath("../..")
+
+[node name="cut2" type="MeshInstance3D" parent="cuts"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+layers = 0
+mesh = SubResource("BoxMesh_0l6mc")
+skeleton = NodePath("../..")

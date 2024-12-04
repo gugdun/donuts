@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dyldi8104486i" path="res://scenes/trail.tscn" id="3_nnxak"]
 [ext_resource type="PackedScene" uid="uid://dmhnak5hwtqcb" path="res://scenes/destroyer.tscn" id="4_pxjyh"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="5_gjvsx"]
+[ext_resource type="PackedScene" uid="uid://c68xoboemdf7w" path="res://scenes/donut.tscn" id="6_i0elt"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="6_8jga8"]
 [ext_resource type="PackedScene" path="res://scenes/hp_container.tscn" id="6_n65nv"]
 [ext_resource type="PackedScene" path="res://scenes/health_point.tscn" id="7_5yfvh"]
@@ -156,6 +157,9 @@ game = NodePath("../..")
 
 [node name="destroyer" parent="scene" instance=ExtResource("4_pxjyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
+
+[node name="rigidbody" parent="." instance=ExtResource("6_i0elt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 0)
 
 [connection signal="pressed" from="game_menu/reset_button" to="." method="_start_game"]
 [connection signal="pressed" from="game_menu/reset_button" to="game_menu/score_label" method="reset"]

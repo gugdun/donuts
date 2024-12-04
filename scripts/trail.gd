@@ -5,28 +5,22 @@ extends StaticBody3D
 @export var head_length: float = 0.02
 @export var head_width: float = 0.01
 @export var mesh_instance: MeshInstance3D
-@export var transform_mesh: MeshInstance3D
+@export var cut: Node3D
+@export var cut1: MeshInstance3D
+@export var cut2: MeshInstance3D
 @export var collider: CollisionShape3D
 @export var game: Game
 
-var _slicer: MeshSlicer
-var _m: ImmediateMesh
+@onready var _m: ImmediateMesh = mesh_instance.mesh as ImmediateMesh
+
 var _pos: Vector3
 var _dir: Vector3
-
-func _ready() -> void:
-	_slicer = MeshSlicer.new()
-	_m = mesh_instance.mesh as ImmediateMesh
-	add_child(_slicer)
 
 func get_pos() -> Vector3:
 	return _pos
 
 func get_dir() -> Vector3:
 	return _dir
-
-func get_slicer() -> MeshSlicer:
-	return _slicer
 
 func update(points: Array, pressed: bool) -> void:
 	_m.clear_surfaces()
@@ -104,9 +98,7 @@ func update(points: Array, pressed: bool) -> void:
 	# Move collider
 	collider.position = points[size-1]
 	collider.disabled = !pressed
-	transform_mesh.position = points[size-1]
-	var target: Vector3 = transform_mesh.position+dir.rotated(Vector3(1,0,1).normalized(),deg_to_rad(90))
-	if abs(dir.y) > 0.01:
-		transform_mesh.look_at(target)
+	cut.rotation = Vector3(dir.angle_to(Vector3(0, 0, 1)), 0, 0)
+	cut.global_position = points[size-1]
 	_pos = points[size-1]
 	_dir = dir
