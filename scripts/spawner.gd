@@ -1,3 +1,5 @@
+class_name Spawner
+
 extends Node3D
 
 @export var donut: PackedScene
@@ -16,6 +18,7 @@ func spawn() -> void:
 	var rand: Vector3 = Vector3(randf() * angular_speed * 2.0 - angular_speed, 0, 0)
 	inst.angular_velocity = Vector3(randf() * angular_velocity, randf() * angular_velocity, randf() * angular_velocity)
 	add_child(inst)
+	inst.set_spawner(self)
 	inst.apply_force(Vector3.UP * force + rand)
 
 func _on_hp_container_you_died():

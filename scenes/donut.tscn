@@ -1,35 +1,36 @@
 [gd_scene load_steps=5 format=3 uid="uid://c68xoboemdf7w"]
 
 [ext_resource type="Script" path="res://scripts/donut.gd" id="1_3rdtm"]
-[ext_resource type="Material" uid="uid://nyoig2p86lbu" path="res://materials/donut_cut.tres" id="2_ake7c"]
 [ext_resource type="Shape3D" uid="uid://cid4s6r28pxv5" path="res://colliders/donut_collider.tres" id="3_1jhbg"]
-[ext_resource type="ArrayMesh" uid="uid://cy3clg6o10037" path="res://meshes/default_donut.tres" id="3_bvts5"]
+[ext_resource type="PackedScene" uid="uid://bh5lymci608fr" path="res://models/donut.glb" id="3_rnmi5"]
+[ext_resource type="PackedScene" uid="uid://c35pipvpolff" path="res://models/donut_half.glb" id="4_ugwxx"]
 
-[node name="rigidbody" type="RigidBody3D" node_paths=PackedStringArray("cut_mesh", "shape")]
+[node name="rigidbody" type="RigidBody3D" node_paths=PackedStringArray("donut", "left_half", "right_half")]
 process_thread_group = 2
 process_thread_group_order = 0
 process_thread_messages = 0
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_3rdtm")
-cut_mesh = NodePath("combiner/box")
-shape = NodePath("area/shape")
+donut = NodePath("donut")
+left_half = NodePath("donut_half")
+right_half = NodePath("donut_half2")
 
 [node name="shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = ExtResource("3_1jhbg")
 disabled = true
 
-[node name="combiner" type="CSGCombiner3D" parent="."]
-
-[node name="mesh" type="CSGMesh3D" parent="combiner"]
+[node name="donut" parent="." instance=ExtResource("3_rnmi5")]
 transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0, 0, 0)
-mesh = ExtResource("3_bvts5")
 
-[node name="box" type="CSGBox3D" parent="combiner"]
+[node name="donut_half" parent="." instance=ExtResource("4_ugwxx")]
+transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0, 0, 0)
 visible = false
-operation = 2
-material = ExtResource("2_ake7c")
+
+[node name="donut_half2" parent="." instance=ExtResource("4_ugwxx")]
+transform = Transform3D(-0.05, 4.37114e-09, -5.21253e-17, 0, 5.96244e-10, 0.05, 4.37114e-09, 0.05, -5.96244e-10, 0, 0, 0)
+visible = false
 
 [node name="area" type="Area3D" parent="."]
 

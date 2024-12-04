@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://kukr7yuoefbq"]
+[gd_scene load_steps=12 format=3 uid="uid://kukr7yuoefbq"]
 
 [ext_resource type="PackedScene" uid="uid://dl5miopsl5xpv" path="res://scenes/spawner.tscn" id="1_aygvt"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ybh72"]
@@ -9,6 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://c68xoboemdf7w" path="res://scenes/donut.tscn" id="6_i0elt"]
 [ext_resource type="PackedScene" uid="uid://bhyqrm80u08wx" path="res://scenes/hp_container.tscn" id="6_n65nv"]
 [ext_resource type="PackedScene" uid="uid://bviyripn8ebbq" path="res://scenes/health_point.tscn" id="7_5yfvh"]
+[ext_resource type="Material" uid="uid://uchdk6idmqwl" path="res://materials/background.tres" id="10_cld21"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_l6nch"]
 
 [node name="game" type="Node3D" node_paths=PackedStringArray("camera", "trail", "score")]
 script = ExtResource("1_ybh72")
@@ -117,22 +120,16 @@ script = ExtResource("6_8jga8")
 [node name="environment" type="Node3D" parent="."]
 
 [node name="sun" type="DirectionalLight3D" parent="environment"]
-transform = Transform3D(0.866025, -0.25, 0.433013, 0, 0.866025, 0.5, -0.5, -0.433013, 0.75, 0, 2, 2)
-light_color = Color(1, 0.804235, 0.763382, 1)
+transform = Transform3D(0.965926, -0.0669873, 0.25, 0, 0.965926, 0.258819, -0.258819, -0.25, 0.933013, 0, 2, 2)
 light_energy = 0.5
 light_bake_mode = 0
-sky_mode = 1
-
-[node name="sun2" type="DirectionalLight3D" parent="environment"]
-transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, 0, 2, 2)
-light_color = Color(1, 0.804235, 0.763382, 1)
-light_energy = 0.5
-light_bake_mode = 0
+shadow_enabled = true
+shadow_opacity = 0.5
 sky_mode = 1
 
 [node name="camera" type="Camera3D" parent="environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-projection = 1
+fov = 60.0
 
 [node name="scene" type="Node3D" parent="."]
 
@@ -145,8 +142,13 @@ game = NodePath("../..")
 [node name="destroyer" parent="scene" instance=ExtResource("4_pxjyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
 
-[node name="rigidbody" parent="scene" instance=ExtResource("6_i0elt")]
+[node name="shader_precompile" parent="scene" instance=ExtResource("6_i0elt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, -1.09278e-08, -2.25, 0, 0.25, -9.83506e-08, 0, 0, -0.25)
+material_override = ExtResource("10_cld21")
+mesh = SubResource("PlaneMesh_l6nch")
 
 [connection signal="pressed" from="game_menu/reset_button" to="." method="_start_game"]
 [connection signal="pressed" from="game_menu/reset_button" to="game_menu/score_label" method="reset"]

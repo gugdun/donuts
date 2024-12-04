@@ -2,21 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dtncebfl8cb8l"
-path.s3tc="res://.godot/imported/donut_Material.png-e42866fcce81fe35df0955460a01e519.s3tc.ctex"
-path.etc2="res://.godot/imported/donut_Material.png-e42866fcce81fe35df0955460a01e519.etc2.ctex"
+uid="uid://vfygw84k8371"
+path.s3tc="res://.godot/imported/v960-ning-05.jpg-f8b617fca33a141464777eef2323d09a.s3tc.ctex"
+path.etc2="res://.godot/imported/v960-ning-05.jpg-f8b617fca33a141464777eef2323d09a.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
-generator_parameters={
-"md5": "41d2698dc9600f4462e85455558ee87b"
-}
 
 [deps]
 
-source_file="res://models/donut_Material.png"
-dest_files=["res://.godot/imported/donut_Material.png-e42866fcce81fe35df0955460a01e519.s3tc.ctex", "res://.godot/imported/donut_Material.png-e42866fcce81fe35df0955460a01e519.etc2.ctex"]
+source_file="res://textures/v960-ning-05.jpg"
+dest_files=["res://.godot/imported/v960-ning-05.jpg-f8b617fca33a141464777eef2323d09a.s3tc.ctex", "res://.godot/imported/v960-ning-05.jpg-f8b617fca33a141464777eef2323d09a.etc2.ctex"]
 
 [params]
 

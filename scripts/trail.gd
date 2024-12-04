@@ -5,19 +5,12 @@ extends StaticBody3D
 @export var head_length: float = 0.02
 @export var head_width: float = 0.01
 @export var mesh_instance: MeshInstance3D
-@export var cut: Node3D
-@export var cut1: MeshInstance3D
-@export var cut2: MeshInstance3D
 @export var collider: CollisionShape3D
 @export var game: Game
 
 @onready var _m: ImmediateMesh = mesh_instance.mesh as ImmediateMesh
 
-var _pos: Vector3
 var _dir: Vector3
-
-func get_pos() -> Vector3:
-	return _pos
 
 func get_dir() -> Vector3:
 	return _dir
@@ -98,7 +91,4 @@ func update(points: Array, pressed: bool) -> void:
 	# Move collider
 	collider.position = points[size-1]
 	collider.disabled = !pressed
-	cut.rotation = Vector3(dir.angle_to(Vector3(0, 0, 1)), 0, 0)
-	cut.global_position = points[size-1]
-	_pos = points[size-1]
 	_dir = dir
