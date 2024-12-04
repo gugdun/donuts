@@ -14,6 +14,13 @@ func increment(amount: int = 1):
 func reset():
 	score = 0
 	update_score_label()
+	remove_all_donuts()
+	
+func remove_all_donuts() -> void:
+	var parent: Node = $"../../scene/spawner" 
+	for child in parent.get_children():  
+		if child is Donut:  
+			child.queue_free()
 
 func update_score_label() -> void:
 	text = "Score: " + str(score)
