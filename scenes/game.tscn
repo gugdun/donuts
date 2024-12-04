@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://kukr7yuoefbq"]
+[gd_scene load_steps=9 format=3 uid="uid://kukr7yuoefbq"]
 
 [ext_resource type="PackedScene" uid="uid://dl5miopsl5xpv" path="res://scenes/spawner.tscn" id="1_aygvt"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ybh72"]
@@ -6,57 +6,27 @@
 [ext_resource type="PackedScene" uid="uid://dmhnak5hwtqcb" path="res://scenes/destroyer.tscn" id="4_pxjyh"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="5_gjvsx"]
 [ext_resource type="PackedScene" uid="uid://c68xoboemdf7w" path="res://scenes/donut.tscn" id="6_i0elt"]
+[ext_resource type="Script" path="res://scripts/game_state.gd" id="6_8jga8"]
+[ext_resource type="PackedScene" path="res://scenes/hp_container.tscn" id="6_n65nv"]
+[ext_resource type="PackedScene" path="res://scenes/health_point.tscn" id="7_5yfvh"]
 
 [node name="game" type="Node3D" node_paths=PackedStringArray("camera", "trail", "score")]
 script = ExtResource("1_ybh72")
 pop_timeout = 0.05
-camera = NodePath("camera")
-trail = NodePath("trail")
-score = NodePath("score")
+camera = NodePath("environment/camera")
+trail = NodePath("scene/trail")
+score = NodePath("game_menu/score_label")
 
-[node name="sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.866025, -0.25, 0.433013, 0, 0.866025, 0.5, -0.5, -0.433013, 0.75, 0, 2, 2)
-light_color = Color(1, 0.804235, 0.763382, 1)
-light_energy = 0.5
-light_bake_mode = 0
-sky_mode = 1
+[node name="game_menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="sun2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, 0, 2, 2)
-light_color = Color(1, 0.804235, 0.763382, 1)
-light_energy = 0.5
-light_bake_mode = 0
-sky_mode = 1
-
-[node name="sun3" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.866025, 0.25, -0.433013, -0.433013, 0.808013, -0.399519, 0.25, 0.533494, 0.808013, 0, 2, 2)
-light_color = Color(1, 0.804235, 0.763382, 1)
-light_energy = 0.5
-light_bake_mode = 0
-sky_mode = 1
-
-[node name="sun4" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.649519, 0.587019, 0.483253, -0.433013, 0.808013, -0.399519, -0.625, 0.0502405, 0.779007, 0, 2, 2)
-visible = false
-light_color = Color(1, 0.804235, 0.763382, 1)
-light_energy = 0.5
-light_bake_mode = 0
-sky_mode = 1
-
-[node name="camera" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-projection = 1
-
-[node name="spawner" parent="." instance=ExtResource("1_aygvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-
-[node name="trail" parent="." node_paths=PackedStringArray("game") instance=ExtResource("3_nnxak")]
-game = NodePath("..")
-
-[node name="destroyer" parent="." instance=ExtResource("4_pxjyh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
-
-[node name="score" type="Label" parent="."]
+[node name="score_label" type="Label" parent="game_menu"]
+layout_mode = 0
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 73.0
@@ -64,14 +34,139 @@ offset_bottom = 43.0
 text = "0"
 script = ExtResource("5_gjvsx")
 
-[node name="reset_scope" type="Button" parent="."]
+[node name="reset_button" type="Button" parent="game_menu"]
+process_mode = 3
+layout_mode = 0
 offset_left = 20.0
 offset_top = 60.0
-offset_right = 74.0
+offset_right = 80.0
 offset_bottom = 96.0
 text = "RESET"
+
+[node name="menu_button" type="Button" parent="game_menu"]
+process_mode = 3
+layout_mode = 0
+offset_left = 20.0
+offset_top = 180.0
+offset_right = 80.0
+offset_bottom = 216.0
+text = "MENU"
+
+[node name="pause_button" type="Button" parent="game_menu"]
+process_mode = 3
+layout_mode = 0
+offset_left = 20.0
+offset_top = 120.0
+offset_right = 80.0
+offset_bottom = 156.0
+text = "PAUSE"
+
+[node name="hp_container" parent="game_menu" instance=ExtResource("6_n65nv")]
+unique_name_in_owner = true
+layout_mode = 1
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 15.0
+offset_top = 15.0
+offset_right = 184.0
+offset_bottom = 58.0
+grow_horizontal = 0
+health_point = ExtResource("7_5yfvh")
+
+[node name="main_menu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="background" type="ColorRect" parent="main_menu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.314316, 0.314316, 0.314316, 1)
+
+[node name="menu_label" type="Label" parent="main_menu"]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 52.0
+offset_right = 636.0
+offset_bottom = 109.0
+theme_override_font_sizes/font_size = 40
+text = "Menu"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="start_button" type="Button" parent="main_menu"]
+process_mode = 3
+layout_mode = 0
+offset_left = 69.0
+offset_top = 100.0
+offset_right = 213.0
+offset_bottom = 178.0
+text = "Start"
+script = ExtResource("6_8jga8")
+
+[node name="environment" type="Node3D" parent="."]
+
+[node name="sun" type="DirectionalLight3D" parent="environment"]
+transform = Transform3D(0.866025, -0.25, 0.433013, 0, 0.866025, 0.5, -0.5, -0.433013, 0.75, 0, 2, 2)
+light_color = Color(1, 0.804235, 0.763382, 1)
+light_energy = 0.5
+light_bake_mode = 0
+sky_mode = 1
+
+[node name="sun2" type="DirectionalLight3D" parent="environment"]
+transform = Transform3D(0.866025, 0.25, -0.433013, 0, 0.866025, 0.5, 0.5, -0.433013, 0.75, 0, 2, 2)
+light_color = Color(1, 0.804235, 0.763382, 1)
+light_energy = 0.5
+light_bake_mode = 0
+sky_mode = 1
+
+[node name="sun3" type="DirectionalLight3D" parent="environment"]
+transform = Transform3D(0.866025, 0.25, -0.433013, -0.433013, 0.808012, -0.399519, 0.25, 0.533494, 0.808012, 0, 2, 2)
+light_color = Color(1, 0.804235, 0.763382, 1)
+light_energy = 0.5
+light_bake_mode = 0
+sky_mode = 1
+
+[node name="sun4" type="DirectionalLight3D" parent="environment"]
+transform = Transform3D(0.649519, 0.587019, 0.483253, -0.433013, 0.808013, -0.399519, -0.625, 0.0502402, 0.779006, 0, 2, 2)
+light_color = Color(1, 0.804235, 0.763382, 1)
+light_energy = 0.5
+light_bake_mode = 0
+sky_mode = 1
+
+[node name="camera" type="Camera3D" parent="environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+projection = 1
+
+[node name="scene" type="Node3D" parent="."]
+
+[node name="spawner" parent="scene" instance=ExtResource("1_aygvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="trail" parent="scene" node_paths=PackedStringArray("game") instance=ExtResource("3_nnxak")]
+game = NodePath("../..")
+
+[node name="destroyer" parent="scene" instance=ExtResource("4_pxjyh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
 
 [node name="rigidbody" parent="." instance=ExtResource("6_i0elt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 0)
 
-[connection signal="pressed" from="reset_scope" to="score" method="reset"]
+[connection signal="pressed" from="game_menu/reset_button" to="." method="_start_game"]
+[connection signal="pressed" from="game_menu/reset_button" to="game_menu/score_label" method="reset"]
+[connection signal="pressed" from="game_menu/reset_button" to="game_menu/hp_container" method="setup_health_points"]
+[connection signal="pressed" from="game_menu/menu_button" to="." method="_open_menu"]
+[connection signal="pressed" from="game_menu/pause_button" to="." method="_pause_game"]
+[connection signal="you_died" from="game_menu/hp_container" to="." method="_pause_game"]
+[connection signal="pressed" from="main_menu/start_button" to="." method="_start_game"]
+[connection signal="pressed" from="main_menu/start_button" to="game_menu/hp_container" method="setup_health_points"]
+[connection signal="donut_destroyed" from="scene/destroyer" to="game_menu/hp_container" method="decrease_health"]

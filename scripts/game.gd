@@ -19,7 +19,8 @@ func _process(delta: float) -> void:
 	if timeout >= pop_timeout and !points.is_empty():
 		points.pop_front()
 		timeout = 0
-	trail.update(points, pressed)
+		trail.update(points, pressed)
+	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -32,5 +33,26 @@ func _input(event: InputEvent) -> void:
 	elif pressed and event is InputEventMouseMotion:
 		var projected: Vector3 = camera.project_position(event.position, 1)
 		points.append(projected)
-		if points.size() > max_points:
+	if points.size() > max_points:
 			points.pop_front()
+
+func _start_game() -> void:
+	GameState.set_state(GameState.State.PLAYING)
+	get_tree().paused = false
+	$main_menu.visible = false
+	return
+
+func _pause_game() -> void:
+	if(GameState.current_state == GameState.State.PAUSED):
+		GameState.set_state(GameState.State.PLAYING)
+		get_tree().paused = false
+	else:
+		GameState.set_state(GameState.State.PAUSED)
+		get_tree().paused = true
+	return
+	
+func _open_menu() -> void:
+	GameState.set_state(GameState.State.IDLE)
+	$main_menu.visible = true
+	score.reset()
+	return
