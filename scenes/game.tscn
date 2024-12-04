@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dyldi8104486i" path="res://scenes/trail.tscn" id="3_nnxak"]
 [ext_resource type="PackedScene" uid="uid://dmhnak5hwtqcb" path="res://scenes/destroyer.tscn" id="4_pxjyh"]
 [ext_resource type="Script" path="res://scripts/score.gd" id="5_gjvsx"]
-[ext_resource type="PackedScene" uid="uid://bhyqrm80u08wx" path="res://scenes/hp_container.tscn" id="6_n65nv"]
+[ext_resource type="PackedScene" path="res://scenes/hp_container.tscn" id="6_n65nv"]
 
 [node name="game" type="Node3D" node_paths=PackedStringArray("camera", "trail", "score")]
 script = ExtResource("1_ybh72")
@@ -70,13 +70,10 @@ offset_right = 74.0
 offset_bottom = 96.0
 text = "RESET"
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="HP_Container" parent="CanvasLayer" instance=ExtResource("6_n65nv")]
+[node name="hp_container" parent="." instance=ExtResource("6_n65nv")]
 unique_name_in_owner = true
-anchors_preset = 0
-offset_left = -1.0
-offset_right = -1.0
+offset_left = -0.999969
+offset_right = -0.999969
 
 [connection signal="pressed" from="reset_scope" to="score" method="reset"]
-[connection signal="you_died" from="CanvasLayer/HP_Container" to="spawner" method="_on_hp_container_you_died"]
+[connection signal="you_died" from="hp_container" to="spawner" method="_on_hp_container_you_died"]

@@ -6,15 +6,15 @@ extends HBoxContainer
 signal you_died
 
 func _ready():
-	setUpHealthPoints(maxHealt)
-	SignalManager.donutLost.connect(decreaseHealth)
+	setup_health_points(maxHealt)
+	SignalManager.donut_lost.connect(decrease_health)
 
-func setUpHealthPoints(max: int):
-	for i in range(max)	:
+func setup_health_points(max_hp: int):
+	for i in range(max_hp):
 		var healtPoint = healthPoint.instantiate()
 		add_child(healtPoint)
 
-func decreaseHealth():
+func decrease_health():
 	if self.get_child_count() > 0:
 		remove_child(self.get_child(0))
 		if self.get_child_count() < 1:

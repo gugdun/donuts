@@ -1,3 +1,3 @@
 extends Node
 
-signal donutLost
+signal donut_lost

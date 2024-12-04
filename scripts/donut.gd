@@ -42,4 +42,4 @@ func body_entered(body: Node) -> void:
 
 func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
 	if _sliceable:
-		SignalManager.donutLost.emit()
+		SignalManager.donut_lost.emit()
