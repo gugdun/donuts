@@ -11,8 +11,6 @@ radius = 0.0104801
 [sub_resource type="BoxMesh" id="BoxMesh_0l6mc"]
 
 [node name="staticbody" type="StaticBody3D" node_paths=PackedStringArray("mesh_instance", "cut", "cut1", "cut2", "collider")]
-collision_layer = 2
-collision_mask = 2
 script = ExtResource("1_6m7tu")
 head_length = 0.025
 head_width = 0.015

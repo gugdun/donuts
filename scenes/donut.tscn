@@ -5,7 +5,7 @@
 [ext_resource type="Shape3D" uid="uid://cid4s6r28pxv5" path="res://colliders/donut_collider.tres" id="3_1jhbg"]
 [ext_resource type="ArrayMesh" uid="uid://cy3clg6o10037" path="res://meshes/default_donut.tres" id="3_bvts5"]
 
-[node name="rigidbody" type="RigidBody3D" node_paths=PackedStringArray("cut_mesh")]
+[node name="rigidbody" type="RigidBody3D" node_paths=PackedStringArray("cut_mesh", "shape")]
 process_thread_group = 2
 process_thread_group_order = 0
 process_thread_messages = 0
@@ -13,6 +13,7 @@ contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_3rdtm")
 cut_mesh = NodePath("combiner/box")
+shape = NodePath("area/shape")
 
 [node name="shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -31,15 +32,9 @@ operation = 2
 material = ExtResource("2_ake7c")
 
 [node name="area" type="Area3D" parent="."]
-collision_layer = 2
-collision_mask = 2
 
 [node name="shape" type="CollisionShape3D" parent="area"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = ExtResource("3_1jhbg")
 
-[node name="VisibleOnScreenNotifier3D" type="VisibleOnScreenNotifier3D" parent="."]
-transform = Transform3D(0.109505, 0, 0, 0, 0.102525, 0, 0, 0, 0.0430074, 0, 0, 0)
-
 [connection signal="body_entered" from="area" to="." method="body_entered"]
-[connection signal="screen_exited" from="VisibleOnScreenNotifier3D" to="." method="_on_visible_on_screen_notifier_3d_screen_exited"]

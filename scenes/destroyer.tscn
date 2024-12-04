@@ -16,4 +16,4 @@ shape = SubResource("BoxShape3D_wraja")
 [node name="collider" type="CollisionShape3D" parent="area"]
 shape = SubResource("BoxShape3D_wraja")
 
-[connection signal="body_entered" from="area" to="." method="body_entered"]
+[connection signal="area_entered" from="area" to="." method="area_entered"]

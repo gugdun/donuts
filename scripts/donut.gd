@@ -3,6 +3,7 @@ class_name Donut
 extends RigidBody3D
 
 @export var cut_mesh: CSGBox3D
+@export var shape: CollisionShape3D
 
 const slice_force: float = 50
 
@@ -10,6 +11,7 @@ var _sliceable: bool = true
 
 func set_sliceable(val: bool) -> void:
 	_sliceable = val
+	shape.disabled = !val
 
 func body_entered(body: Node) -> void:
 	if body is Destroyer:
@@ -24,7 +26,7 @@ func _slice(trail: Trail):
 	cut_mesh.global_position = trail.cut1.global_position
 	cut_mesh.global_rotation = trail.cut1.global_rotation
 	cut_mesh.visible = true
-	set_sliceable(false)
+	call_deferred("set_sliceable", false)
 
 	# Spawn second half
 	var new_donut: Donut = duplicate()
@@ -33,7 +35,7 @@ func _slice(trail: Trail):
 	new_donut.cut_mesh.global_position = trail.cut2.global_position
 	new_donut.cut_mesh.global_rotation = trail.cut2.global_rotation
 	new_donut.cut_mesh.visible = true
-	new_donut.set_sliceable(false)
+	new_donut.call_deferred("set_sliceable", false)
 
 	# Apply force to separate halfs
 	apply_force(trail.get_dir() * slice_force)
