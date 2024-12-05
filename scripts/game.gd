@@ -7,6 +7,9 @@ extends Node3D
 @export var camera: Camera3D
 @export var trail: Trail
 @export var score: Score
+@export var pause_button: Button
+@export var health_bar: HealthBar
+@export var scheduler: Scheduler
 
 var pressed: bool = false
 var points: Array[Vector3] = []
@@ -20,7 +23,6 @@ func _process(delta: float) -> void:
 		points.pop_front()
 		timeout = 0
 	trail.update(points, pressed)
-	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -37,10 +39,17 @@ func _input(event: InputEvent) -> void:
 			points.pop_front()
 
 func _start_game() -> void:
+	_reset_game()
 	GameState.set_state(GameState.State.PLAYING)
 	get_tree().paused = false
 	$main_menu.visible = false
 	return
+
+func _reset_game() -> void:
+	score.reset()
+	scheduler.reset()
+	health_bar.reset()
+	pause_button.disabled = false
 
 func _pause_game() -> void:
 	if(GameState.current_state == GameState.State.PAUSED):
@@ -54,5 +63,9 @@ func _pause_game() -> void:
 func _open_menu() -> void:
 	GameState.set_state(GameState.State.IDLE)
 	$main_menu.visible = true
-	score.reset()
 	return
+
+func game_over() -> void:
+	GameState.set_state(GameState.State.GAME_OVER)
+	get_tree().paused = true
+	pause_button.disabled = true

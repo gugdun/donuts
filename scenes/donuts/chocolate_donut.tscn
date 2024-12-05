@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cebplxkxfurxq"]
+
+[ext_resource type="Script" path="res://scripts/donut.gd" id="1_ao1uo"]
+[ext_resource type="Shape3D" uid="uid://cid4s6r28pxv5" path="res://colliders/donut_collider.tres" id="2_qumg0"]
+[ext_resource type="PackedScene" uid="uid://brgieap6w2bux" path="res://models/chocolate_donut.glb" id="3_efvyq"]
+[ext_resource type="PackedScene" uid="uid://d66w05t41oey" path="res://models/chocolate_donut_cut.glb" id="4_70g7m"]
+
+[node name="rigidbody" type="RigidBody3D" node_paths=PackedStringArray("donut", "left_half", "right_half")]
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_ao1uo")
+donut = NodePath("chocolate_donut")
+left_half = NodePath("chocolate_donut_cut")
+right_half = NodePath("chocolate_donut_cut2")
+
+[node name="shape" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = ExtResource("2_qumg0")
+disabled = true
+
+[node name="chocolate_donut" parent="." instance=ExtResource("3_efvyq")]
+transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0, 0, 0)
+
+[node name="chocolate_donut_cut" parent="." instance=ExtResource("4_70g7m")]
+transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0, 0, 0)
+
+[node name="chocolate_donut_cut2" parent="." instance=ExtResource("4_70g7m")]
+transform = Transform3D(-0.05, -4.37114e-09, -1.91069e-16, 0, -2.18557e-09, 0.05, -4.37114e-09, 0.05, 2.18557e-09, 0, 0, 0)
+
+[node name="area" type="Area3D" parent="."]
+
+[node name="shape" type="CollisionShape3D" parent="area"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+shape = ExtResource("2_qumg0")
+
+[connection signal="body_entered" from="area" to="." method="body_entered"]
