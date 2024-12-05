@@ -1,13 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dl5miopsl5xpv"]
+[gd_scene load_steps=2 format=3 uid="uid://dl5miopsl5xpv"]
 
 [ext_resource type="Script" path="res://scripts/spawner.gd" id="1_hkbxc"]
-[ext_resource type="PackedScene" uid="uid://c68xoboemdf7w" path="res://scenes/donut.tscn" id="2_u41ib"]
 
 [node name="spawner" type="Node3D" node_paths=PackedStringArray("timer")]
 script = ExtResource("1_hkbxc")
-donut = ExtResource("2_u41ib")
-timer = NodePath("timer")
-
-[node name="timer" type="Timer" parent="."]
-
-[connection signal="timeout" from="timer" to="." method="spawn"]
+timer = NodePath("")

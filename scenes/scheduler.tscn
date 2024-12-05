@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bolda1q4ebxdl"]
+
+[ext_resource type="Script" path="res://scripts/scheduler.gd" id="1_0ta23"]
+
+[node name="scheduler" type="Node3D" node_paths=PackedStringArray("timer")]
+script = ExtResource("1_0ta23")
+timer = NodePath("timer")
+
+[node name="timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="timer" to="." method="on_timer_tick"]
