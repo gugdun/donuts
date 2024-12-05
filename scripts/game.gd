@@ -43,6 +43,7 @@ func _start_game() -> void:
 	GameState.set_state(GameState.State.PLAYING)
 	get_tree().paused = false
 	$main_menu.visible = false
+	Score.reset()
 	return
 
 func _reset_game() -> void:

@@ -25,7 +25,7 @@ func body_entered(body: Node) -> void:
 		queue_free()
 	elif body is Trail and _sliceable:
 		var trail: Trail = body as Trail
-		trail.game.score.increment()
+		Score.increment()
 		_slice(trail)
 
 func _slice(trail: Trail):
