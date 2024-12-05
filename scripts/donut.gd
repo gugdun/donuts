@@ -31,6 +31,7 @@ func body_entered(body: Node) -> void:
 func _slice(trail: Trail):
 	# Cut self
 	donut.visible = false
+	right_half.visible = false
 	left_half.visible = true
 	call_deferred("set_sliceable", false)
 
@@ -39,6 +40,7 @@ func _slice(trail: Trail):
 	_spawner.add_child(new_donut)
 	new_donut.global_position = global_position
 	new_donut.angular_velocity = -angular_velocity
+	new_donut.donut.visible = false
 	new_donut.left_half.visible = false
 	new_donut.right_half.visible = true
 	new_donut.call_deferred("set_sliceable", false)

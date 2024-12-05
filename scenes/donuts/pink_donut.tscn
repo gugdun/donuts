@@ -2,32 +2,30 @@
 
 [ext_resource type="Script" path="res://scripts/donut.gd" id="1_3rdtm"]
 [ext_resource type="Shape3D" uid="uid://cid4s6r28pxv5" path="res://colliders/donut_collider.tres" id="3_1jhbg"]
-[ext_resource type="PackedScene" uid="uid://bh5lymci608fr" path="res://models/donut.glb" id="3_rnmi5"]
-[ext_resource type="PackedScene" uid="uid://c35pipvpolff" path="res://models/donut_half.glb" id="4_ugwxx"]
+[ext_resource type="PackedScene" uid="uid://bgqn8m73os3cy" path="res://models/pink_donut.glb" id="3_bt6lp"]
+[ext_resource type="PackedScene" uid="uid://b2q7dlt3et5ku" path="res://models/pink_donut_cut.glb" id="4_w4wsq"]
 
 [node name="rigidbody" type="RigidBody3D" node_paths=PackedStringArray("donut", "left_half", "right_half")]
 contact_monitor = true
 max_contacts_reported = 5
 script = ExtResource("1_3rdtm")
-donut = NodePath("donut")
-left_half = NodePath("donut_half")
-right_half = NodePath("donut_half2")
+donut = NodePath("pink_donut")
+left_half = NodePath("pink_donut_cut")
+right_half = NodePath("pink_donut_cut2")
 
 [node name="shape" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = ExtResource("3_1jhbg")
 disabled = true
 
-[node name="donut" parent="." instance=ExtResource("3_rnmi5")]
+[node name="pink_donut" parent="." instance=ExtResource("3_bt6lp")]
 transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0, 0, 0)
 
-[node name="donut_half" parent="." instance=ExtResource("4_ugwxx")]
+[node name="pink_donut_cut" parent="." instance=ExtResource("4_w4wsq")]
 transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0, 0, 0)
-visible = false
 
-[node name="donut_half2" parent="." instance=ExtResource("4_ugwxx")]
-transform = Transform3D(-0.05, 4.37114e-09, -5.21253e-17, 0, 5.96244e-10, 0.05, 4.37114e-09, 0.05, -5.96244e-10, 0, 0, 0)
-visible = false
+[node name="pink_donut_cut2" parent="." instance=ExtResource("4_w4wsq")]
+transform = Transform3D(-0.05, -4.37114e-09, -1.91069e-16, 0, -2.18557e-09, 0.05, -4.37114e-09, 0.05, 2.18557e-09, 0, 0, 0)
 
 [node name="area" type="Area3D" parent="."]
 

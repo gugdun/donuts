@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c35pipvpolff"
-path="res://.godot/imported/donut_half.glb-ee4e23a6d4864a3399aa39c95b2a8781.scn"
+uid="uid://b2q7dlt3et5ku"
+path="res://.godot/imported/pink_donut_cut.glb-b3e357576476a956a45c7d4d61f82b31.scn"
 
 [deps]
 
-source_file="res://models/donut_half.glb"
-dest_files=["res://.godot/imported/donut_half.glb-ee4e23a6d4864a3399aa39c95b2a8781.scn"]
+source_file="res://models/pink_donut_cut.glb"
+dest_files=["res://.godot/imported/pink_donut_cut.glb-b3e357576476a956a45c7d4d61f82b31.scn"]
 
 [params]
 
