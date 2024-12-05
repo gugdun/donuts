@@ -1,14 +1,16 @@
-[gd_scene load_steps=13 format=3 uid="uid://kukr7yuoefbq"]
+[gd_scene load_steps=15 format=3 uid="uid://kukr7yuoefbq"]
 
 [ext_resource type="PackedScene" uid="uid://dl5miopsl5xpv" path="res://scenes/spawner.tscn" id="1_aygvt"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ybh72"]
 [ext_resource type="PackedScene" uid="uid://dyldi8104486i" path="res://scenes/trail.tscn" id="3_nnxak"]
 [ext_resource type="PackedScene" uid="uid://dmhnak5hwtqcb" path="res://scenes/destroyer.tscn" id="4_pxjyh"]
-[ext_resource type="Script" path="res://scripts/score.gd" id="5_gjvsx"]
+[ext_resource type="Script" path="res://scripts/score_label.gd" id="6_3ugvf"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="6_8jga8"]
 [ext_resource type="PackedScene" uid="uid://c68xoboemdf7w" path="res://scenes/donut.tscn" id="6_i0elt"]
 [ext_resource type="PackedScene" uid="uid://bhyqrm80u08wx" path="res://scenes/hp_container.tscn" id="6_n65nv"]
 [ext_resource type="PackedScene" uid="uid://bviyripn8ebbq" path="res://scenes/health_point.tscn" id="7_5yfvh"]
+[ext_resource type="Script" path="res://scripts/best_score_label.gd" id="7_n82gt"]
+[ext_resource type="Script" path="res://scripts/reset_button.gd" id="8_2bbsm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c6ap1"]
 sky_top_color = Color(0.534663, 0.685574, 0.94765, 1)
@@ -72,8 +74,17 @@ offset_left = 20.0
 offset_top = 20.0
 offset_right = 73.0
 offset_bottom = 43.0
-text = "0"
-script = ExtResource("5_gjvsx")
+text = "Score: "
+script = ExtResource("6_3ugvf")
+
+[node name="best_score_label" type="Label" parent="game_menu"]
+layout_mode = 0
+offset_left = 140.0
+offset_top = 20.0
+offset_right = 238.0
+offset_bottom = 43.0
+text = "Best score: 0"
+script = ExtResource("7_n82gt")
 
 [node name="reset_button" type="Button" parent="game_menu"]
 process_mode = 3
@@ -83,6 +94,7 @@ offset_top = 60.0
 offset_right = 80.0
 offset_bottom = 96.0
 text = "RESET"
+script = ExtResource("8_2bbsm")
 
 [node name="menu_button" type="Button" parent="game_menu"]
 process_mode = 3
@@ -118,6 +130,7 @@ grow_horizontal = 0
 health_point = ExtResource("7_5yfvh")
 
 [node name="main_menu" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -156,10 +169,8 @@ text = "Start"
 script = ExtResource("6_8jga8")
 
 [connection signal="donut_destroyed" from="scene/destroyer" to="game_menu/hp_container" method="decrease_health"]
-[connection signal="pressed" from="game_menu/reset_button" to="." method="_start_game"]
-[connection signal="pressed" from="game_menu/reset_button" to="game_menu/score_label" method="reset"]
-[connection signal="pressed" from="game_menu/reset_button" to="game_menu/hp_container" method="setup_health_points"]
-[connection signal="pressed" from="game_menu/reset_button" to="game_menu/pause_button" method="set_disabled" binds= [false]]
+[connection signal="ready" from="game_menu/score_label" to="game_menu/score_label" method="_on_ready"]
+[connection signal="pressed" from="game_menu/reset_button" to="game_menu/reset_button" method="_on_pressed"]
 [connection signal="pressed" from="game_menu/menu_button" to="." method="_open_menu"]
 [connection signal="pressed" from="game_menu/pause_button" to="." method="_pause_game"]
 [connection signal="you_died" from="game_menu/hp_container" to="." method="_pause_game"]

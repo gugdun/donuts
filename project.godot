@@ -19,6 +19,8 @@ config/icon="res://textures/icon.svg"
 [autoload]
 
 GameState="*res://scripts/game_state.gd"
+Score="*res://scripts/score.gd"
+BestScore="*res://scripts/best_score.gd"
 
 [display]
 

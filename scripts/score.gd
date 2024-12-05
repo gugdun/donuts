@@ -1,26 +1,19 @@
-extends Label
-
-class_name Score
+extends Node
 
 @export var score: int = 0
 
-func _ready() -> void:
-	update_score_label()
+signal score_incremented(amount: int)
+signal score_reseted()
+
 
 func increment(amount: int = 1):
 	score += amount
-	update_score_label()
+	emit_signal("score_incremented", amount)
+
 
 func reset():
 	score = 0
-	update_score_label()
-	remove_all_donuts()
-	
-func remove_all_donuts() -> void:
-	var parent: Node = $"../../scene/spawner" 
-	for child in parent.get_children():  
-		if child is Donut:  
-			child.queue_free()
+	emit_signal("score_reseted", score)
 
-func update_score_label() -> void:
-	text = "Score: " + str(score)
+func _on_ready() -> void:
+	pass # Replace with function body.
