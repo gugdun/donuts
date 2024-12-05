@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bh5lymci608fr"
-path="res://.godot/imported/donut.glb-1ca145c60ceda701819b085ba439ec46.scn"
+uid="uid://p0ujmb1w8jdb"
+path="res://.godot/imported/red_donut_cut.glb-3fee804419dbed8fd098678545dd64d3.scn"
 
 [deps]
 
-source_file="res://models/donut.glb"
-dest_files=["res://.godot/imported/donut.glb-1ca145c60ceda701819b085ba439ec46.scn"]
+source_file="res://models/red_donut_cut.glb"
+dest_files=["res://.godot/imported/red_donut_cut.glb-3fee804419dbed8fd098678545dd64d3.scn"]
 
 [params]
 

@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bpws5mvpqnbjo"
-path.s3tc="res://.godot/imported/donut_Donut_Texture.png-110d11f1bf1f27cf15b9dd4314704040.s3tc.ctex"
-path.etc2="res://.godot/imported/donut_Donut_Texture.png-110d11f1bf1f27cf15b9dd4314704040.etc2.ctex"
+uid="uid://dflyqid2ppnbd"
+path.s3tc="res://.godot/imported/chocolate_donut_Donut_Texture.png-82416c575ed0b9c2f4209bebfcccd984.s3tc.ctex"
+path.etc2="res://.godot/imported/chocolate_donut_Donut_Texture.png-82416c575ed0b9c2f4209bebfcccd984.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "39ce41652d81cbd12bcd1523202e4894"
+"md5": "682a439a0777d283f5a03f8e97ce6233"
 }
 
 [deps]
 
-source_file="res://models/donut_Donut_Texture.png"
-dest_files=["res://.godot/imported/donut_Donut_Texture.png-110d11f1bf1f27cf15b9dd4314704040.s3tc.ctex", "res://.godot/imported/donut_Donut_Texture.png-110d11f1bf1f27cf15b9dd4314704040.etc2.ctex"]
+source_file="res://textures/donuts/chocolate_donut_Donut_Texture.png"
+dest_files=["res://.godot/imported/chocolate_donut_Donut_Texture.png-82416c575ed0b9c2f4209bebfcccd984.s3tc.ctex", "res://.godot/imported/chocolate_donut_Donut_Texture.png-82416c575ed0b9c2f4209bebfcccd984.etc2.ctex"]
 
 [params]
 

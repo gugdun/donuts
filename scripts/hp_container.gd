@@ -1,3 +1,5 @@
+class_name HealthBar
+
 extends HBoxContainer
 
 @export var health_point: PackedScene
@@ -5,7 +7,7 @@ extends HBoxContainer
 
 signal you_died
 
-func setup_health_points():
+func reset():
 	for c in get_children():
 		c.queue_free()
 	for i in range(max_health):

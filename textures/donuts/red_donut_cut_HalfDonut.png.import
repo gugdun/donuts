@@ -2,18 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bx78886y8118f"
-path.s3tc="res://.godot/imported/bread.jpg-1c51d043ab745e74e2d4180d3646f380.s3tc.ctex"
-path.etc2="res://.godot/imported/bread.jpg-1c51d043ab745e74e2d4180d3646f380.etc2.ctex"
+uid="uid://lw2hfnyygj52"
+path.s3tc="res://.godot/imported/red_donut_cut_HalfDonut.png-6c1765fe4f7bf45822002c4cfc406d36.s3tc.ctex"
+path.etc2="res://.godot/imported/red_donut_cut_HalfDonut.png-6c1765fe4f7bf45822002c4cfc406d36.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "682a439a0777d283f5a03f8e97ce6233"
+}
 
 [deps]
 
-source_file="res://textures/bread.jpg"
-dest_files=["res://.godot/imported/bread.jpg-1c51d043ab745e74e2d4180d3646f380.s3tc.ctex", "res://.godot/imported/bread.jpg-1c51d043ab745e74e2d4180d3646f380.etc2.ctex"]
+source_file="res://textures/donuts/red_donut_cut_HalfDonut.png"
+dest_files=["res://.godot/imported/red_donut_cut_HalfDonut.png-6c1765fe4f7bf45822002c4cfc406d36.s3tc.ctex", "res://.godot/imported/red_donut_cut_HalfDonut.png-6c1765fe4f7bf45822002c4cfc406d36.etc2.ctex"]
 
 [params]
 
