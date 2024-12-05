@@ -1,25 +1,27 @@
+class_name ResetButton
+
 extends Button
 
+@export var nodes_to_reset: Array[Node]
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+@onready var _reset_calls: Array[Callable] = []
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
-	pass
-
-
-func _on_pressed() -> void:
+func do_reset(custom_reset_calls: Array[Callable] = []) -> void:
+	# Default reset logic
 	Score.reset()
-	remove_all_donuts()
-	pass # Replace with function body.
+	for n in nodes_to_reset:
+		n.reset()
 
-	
-func remove_all_donuts() -> void:
-	var parent: Node = $"../../scene/spawner" 
-	for child in parent.get_children():  
-		if child is Donut:  
-			child.queue_free()
+	# Call user defined reset logic
+	if custom_reset_calls.is_empty():
+		for c in _reset_calls:
+			c.call()
+	else:
+		for c in custom_reset_calls:
+			c.call()
+
+func add_reset_call(callable: Callable):
+	_reset_calls.append(callable)
+
+func remove_reset_call(callable: Callable):
+	_reset_calls.erase(callable)

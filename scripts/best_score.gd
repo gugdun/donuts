@@ -20,7 +20,7 @@ func _on_score_incremented(amount: int) -> void:
 	if Score.score > best_score:
 		best_score = Score.score
 		save_best_score()
-		emit_signal("best_score_incremented", amount)
+		best_score_incremented.emit(amount)
 	#update_score_label()
 
 func load_best_score() -> int:

@@ -5,11 +5,16 @@ extends RigidBody3D
 @export var donut: Node3D
 @export var left_half: Node3D
 @export var right_half: Node3D
+@export var shader_precompilation: bool = false
 
 const slice_force: float = 50
 
 var _sliceable: bool = true
 var _spawner: Spawner
+
+func _ready() -> void:
+	if shader_precompilation:
+		set_sliceable(false)
 
 func is_sliceable() -> bool:
 	return _sliceable

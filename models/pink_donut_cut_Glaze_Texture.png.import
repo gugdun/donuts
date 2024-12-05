@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bbvposkybba2q"
-path.s3tc="res://.godot/imported/pink_donut_HalfGlaze.png-a74cf8346034071d94500fd706c4efa5.s3tc.ctex"
-path.etc2="res://.godot/imported/pink_donut_HalfGlaze.png-a74cf8346034071d94500fd706c4efa5.etc2.ctex"
+uid="uid://yymvavkqs4q6"
+path.s3tc="res://.godot/imported/pink_donut_cut_Glaze_Texture.png-3e56bec9778d3b3c6920c5d067de15f4.s3tc.ctex"
+path.etc2="res://.godot/imported/pink_donut_cut_Glaze_Texture.png-3e56bec9778d3b3c6920c5d067de15f4.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -15,8 +15,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://textures/donuts/pink_donut_HalfGlaze.png"
-dest_files=["res://.godot/imported/pink_donut_HalfGlaze.png-a74cf8346034071d94500fd706c4efa5.s3tc.ctex", "res://.godot/imported/pink_donut_HalfGlaze.png-a74cf8346034071d94500fd706c4efa5.etc2.ctex"]
+source_file="res://models/pink_donut_cut_Glaze_Texture.png"
+dest_files=["res://.godot/imported/pink_donut_cut_Glaze_Texture.png-3e56bec9778d3b3c6920c5d067de15f4.s3tc.ctex", "res://.godot/imported/pink_donut_cut_Glaze_Texture.png-3e56bec9778d3b3c6920c5d067de15f4.etc2.ctex"]
 
 [params]
 

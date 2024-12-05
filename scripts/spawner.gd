@@ -18,3 +18,8 @@ func _spawn_donut(donut: Donut) -> void:
 func spawn_default_donut() -> void:
 	var d: Donut = default_donuts.pick_random().instantiate()
 	_spawn_donut(d)
+
+func reset() -> void:
+	for c in get_children():
+		if c is Donut:
+			c.queue_free()

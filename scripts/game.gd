@@ -6,14 +6,17 @@ extends Node3D
 @export var pop_timeout: float = 1.0 / 60
 @export var camera: Camera3D
 @export var trail: Trail
-@export var score: Score
-@export var pause_button: Button
 @export var health_bar: HealthBar
-@export var scheduler: Scheduler
+@export var reset_button: ResetButton
+@export var pause_button: Button
 
 var pressed: bool = false
 var points: Array[Vector3] = []
 var timeout: float = 0
+
+func _ready() -> void:
+	get_tree().paused = true
+	reset_button.add_reset_call(_on_reset)
 
 func _process(delta: float) -> void:
 	max_points = int(Engine.get_frames_per_second() / 12)
@@ -38,19 +41,14 @@ func _input(event: InputEvent) -> void:
 		if points.size() > max_points:
 			points.pop_front()
 
-func _start_game() -> void:
-	_reset_game()
+func _on_reset():
 	GameState.set_state(GameState.State.PLAYING)
 	get_tree().paused = false
-	$main_menu.visible = false
-	Score.reset()
-	return
-
-func _reset_game() -> void:
-	score.reset()
-	scheduler.reset()
-	health_bar.reset()
 	pause_button.disabled = false
+
+func _start_game() -> void:
+	$main_menu.visible = false
+	reset_button.do_reset()
 
 func _pause_game() -> void:
 	if(GameState.current_state == GameState.State.PAUSED):
@@ -59,12 +57,11 @@ func _pause_game() -> void:
 	else:
 		GameState.set_state(GameState.State.PAUSED)
 		get_tree().paused = true
-	return
 	
 func _open_menu() -> void:
 	GameState.set_state(GameState.State.IDLE)
 	$main_menu.visible = true
-	return
+	pause_button.disabled = false
 
 func game_over() -> void:
 	GameState.set_state(GameState.State.GAME_OVER)

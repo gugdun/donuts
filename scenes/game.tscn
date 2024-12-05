@@ -1,16 +1,16 @@
-[gd_scene load_steps=16 format=3 uid="uid://kukr7yuoefbq"]
+[gd_scene load_steps=18 format=3 uid="uid://kukr7yuoefbq"]
 
 [ext_resource type="PackedScene" uid="uid://dl5miopsl5xpv" path="res://scenes/spawner.tscn" id="1_aygvt"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ybh72"]
 [ext_resource type="PackedScene" uid="uid://bolda1q4ebxdl" path="res://scenes/scheduler.tscn" id="2_c5t7g"]
 [ext_resource type="PackedScene" uid="uid://dyldi8104486i" path="res://scenes/trail.tscn" id="3_nnxak"]
 [ext_resource type="PackedScene" uid="uid://dmhnak5hwtqcb" path="res://scenes/destroyer.tscn" id="4_pxjyh"]
-[ext_resource type="Script" path="res://scripts/score_label.gd" id="6_3ugvf"]
 [ext_resource type="PackedScene" uid="uid://cebplxkxfurxq" path="res://scenes/donuts/chocolate_donut.tscn" id="4_wa7g3"]
 [ext_resource type="PackedScene" uid="uid://bnb4lgqk50tai" path="res://scenes/donuts/red_donut.tscn" id="5_l268r"]
+[ext_resource type="Script" path="res://scripts/score_label.gd" id="6_3ugvf"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="6_8jga8"]
 [ext_resource type="PackedScene" uid="uid://c68xoboemdf7w" path="res://scenes/donuts/pink_donut.tscn" id="6_i0elt"]
-[ext_resource type="PackedScene" uid="uid://bhyqrm80u08wx" path="res://scenes/hp_container.tscn" id="6_n65nv"]
+[ext_resource type="PackedScene" path="res://scenes/hp_container.tscn" id="6_n65nv"]
 [ext_resource type="PackedScene" uid="uid://bviyripn8ebbq" path="res://scenes/health_point.tscn" id="7_5yfvh"]
 [ext_resource type="Script" path="res://scripts/best_score_label.gd" id="7_n82gt"]
 [ext_resource type="Script" path="res://scripts/reset_button.gd" id="8_2bbsm"]
@@ -30,15 +30,14 @@ sky_material = SubResource("ProceduralSkyMaterial_c6ap1")
 background_mode = 2
 sky = SubResource("Sky_m31dt")
 
-[node name="game" type="Node3D" node_paths=PackedStringArray("camera", "trail", "score", "pause_button", "health_bar", "scheduler")]
+[node name="game" type="Node3D" node_paths=PackedStringArray("camera", "trail", "health_bar", "reset_button", "pause_button")]
 script = ExtResource("1_ybh72")
 pop_timeout = 0.05
 camera = NodePath("environment/camera")
 trail = NodePath("scene/trail")
-score = NodePath("game_menu/score_label")
-pause_button = NodePath("game_menu/pause_button")
 health_bar = NodePath("game_menu/hp_container")
-scheduler = NodePath("scene/scheduler")
+reset_button = NodePath("game_menu/reset_button")
+pause_button = NodePath("game_menu/pause_button")
 
 [node name="environment" type="Node3D" parent="."]
 
@@ -68,8 +67,19 @@ game = NodePath("../..")
 [node name="destroyer" parent="scene" instance=ExtResource("4_pxjyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
 
-[node name="shader_precompile" parent="scene" instance=ExtResource("6_i0elt")]
+[node name="shader_precompile" type="Node3D" parent="."]
+
+[node name="chocolate_donut" parent="shader_precompile" instance=ExtResource("4_wa7g3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 0)
+shader_precompilation = true
+
+[node name="pink_donut" parent="shader_precompile" instance=ExtResource("6_i0elt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, -1, 0)
+shader_precompilation = true
+
+[node name="red_donut" parent="shader_precompile" instance=ExtResource("5_l268r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 1)
+shader_precompilation = true
 
 [node name="game_menu" type="Control" parent="."]
 layout_mode = 3
@@ -97,7 +107,7 @@ offset_bottom = 43.0
 text = "Best score: 0"
 script = ExtResource("7_n82gt")
 
-[node name="reset_button" type="Button" parent="game_menu"]
+[node name="reset_button" type="Button" parent="game_menu" node_paths=PackedStringArray("nodes_to_reset")]
 process_mode = 3
 layout_mode = 0
 offset_left = 20.0
@@ -106,6 +116,7 @@ offset_right = 80.0
 offset_bottom = 96.0
 text = "RESET"
 script = ExtResource("8_2bbsm")
+nodes_to_reset = [NodePath("../hp_container"), NodePath("../../scene/scheduler")]
 
 [node name="menu_button" type="Button" parent="game_menu"]
 process_mode = 3
@@ -141,7 +152,6 @@ grow_horizontal = 0
 health_point = ExtResource("7_5yfvh")
 
 [node name="main_menu" type="Control" parent="."]
-visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -180,8 +190,7 @@ text = "Start"
 script = ExtResource("6_8jga8")
 
 [connection signal="donut_destroyed" from="scene/destroyer" to="game_menu/hp_container" method="decrease_health"]
-[connection signal="ready" from="game_menu/score_label" to="game_menu/score_label" method="_on_ready"]
-[connection signal="pressed" from="game_menu/reset_button" to="game_menu/reset_button" method="_on_pressed"]
+[connection signal="pressed" from="game_menu/reset_button" to="game_menu/reset_button" method="do_reset"]
 [connection signal="pressed" from="game_menu/menu_button" to="." method="_open_menu"]
 [connection signal="pressed" from="game_menu/pause_button" to="." method="_pause_game"]
 [connection signal="you_died" from="game_menu/hp_container" to="." method="game_over"]

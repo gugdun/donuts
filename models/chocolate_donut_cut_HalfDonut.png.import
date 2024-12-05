@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://drjloxplsd5tv"
-path.s3tc="res://.godot/imported/red_donut_Donut_Texture.png-0f4f0053aeb5f600814ab590eba96193.s3tc.ctex"
-path.etc2="res://.godot/imported/red_donut_Donut_Texture.png-0f4f0053aeb5f600814ab590eba96193.etc2.ctex"
+uid="uid://w64ypwthy7xy"
+path.s3tc="res://.godot/imported/chocolate_donut_cut_HalfDonut.png-94402a056b8866b550a2f3a53c1f4dda.s3tc.ctex"
+path.etc2="res://.godot/imported/chocolate_donut_cut_HalfDonut.png-94402a056b8866b550a2f3a53c1f4dda.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -15,8 +15,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://textures/donuts/red_donut_Donut_Texture.png"
-dest_files=["res://.godot/imported/red_donut_Donut_Texture.png-0f4f0053aeb5f600814ab590eba96193.s3tc.ctex", "res://.godot/imported/red_donut_Donut_Texture.png-0f4f0053aeb5f600814ab590eba96193.etc2.ctex"]
+source_file="res://models/chocolate_donut_cut_HalfDonut.png"
+dest_files=["res://.godot/imported/chocolate_donut_cut_HalfDonut.png-94402a056b8866b550a2f3a53c1f4dda.s3tc.ctex", "res://.godot/imported/chocolate_donut_cut_HalfDonut.png-94402a056b8866b550a2f3a53c1f4dda.etc2.ctex"]
 
 [params]
 

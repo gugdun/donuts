@@ -9,11 +9,12 @@ enum Preset { SINGLE, DOUBLE, TRIPLE, QUAD }
 @export var timer: Timer
 
 func _ready() -> void:
-	timer.start()
 	GameState.state_changed.connect(_on_state_changed)
 
 func _on_state_changed(_old_state, new_state) -> void:
-	if new_state == GameState.State.GAME_OVER:
+	if new_state == GameState.State.PLAYING:
+		timer.start()
+	elif new_state == GameState.State.GAME_OVER:
 		timer.stop()
 
 func on_timer_tick() -> void:
@@ -27,6 +28,5 @@ func on_timer_tick() -> void:
 			pass
 
 func reset() -> void:
-	if !timer.is_stopped():
-		timer.stop()
-	timer.start()
+	for s in spawners:
+		s.reset()

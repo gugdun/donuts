@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0i431ik7bit0"
-path.s3tc="res://.godot/imported/pink_donut_Donut_Texture.png-60ef9814420d29967222eb2605ba71a6.s3tc.ctex"
-path.etc2="res://.godot/imported/pink_donut_Donut_Texture.png-60ef9814420d29967222eb2605ba71a6.etc2.ctex"
+uid="uid://bp7ajyw0sbl3c"
+path.s3tc="res://.godot/imported/pink_donut_Donut_Texture.png-c946b6f764d4285799c2460bb4626c40.s3tc.ctex"
+path.etc2="res://.godot/imported/pink_donut_Donut_Texture.png-c946b6f764d4285799c2460bb4626c40.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -15,8 +15,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://textures/donuts/pink_donut_Donut_Texture.png"
-dest_files=["res://.godot/imported/pink_donut_Donut_Texture.png-60ef9814420d29967222eb2605ba71a6.s3tc.ctex", "res://.godot/imported/pink_donut_Donut_Texture.png-60ef9814420d29967222eb2605ba71a6.etc2.ctex"]
+source_file="res://models/pink_donut_Donut_Texture.png"
+dest_files=["res://.godot/imported/pink_donut_Donut_Texture.png-c946b6f764d4285799c2460bb4626c40.s3tc.ctex", "res://.godot/imported/pink_donut_Donut_Texture.png-c946b6f764d4285799c2460bb4626c40.etc2.ctex"]
 
 [params]
 

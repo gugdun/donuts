@@ -2,21 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u2bw1va6h4px"
-path.s3tc="res://.godot/imported/chocolate_donut_HalfGlaze.png-311791abc6a1755d2465e54e62920680.s3tc.ctex"
-path.etc2="res://.godot/imported/chocolate_donut_HalfGlaze.png-311791abc6a1755d2465e54e62920680.etc2.ctex"
+uid="uid://rsxue5kdn52i"
+path.s3tc="res://.godot/imported/pink_donut_cut_HalfDonut.png-d90de35da13536419312db5dac9089aa.s3tc.ctex"
+path.etc2="res://.godot/imported/pink_donut_cut_HalfDonut.png-d90de35da13536419312db5dac9089aa.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "0456080590fcc8ea8e8064e41e950825"
+"md5": "682a439a0777d283f5a03f8e97ce6233"
 }
 
 [deps]
 
-source_file="res://textures/donuts/chocolate_donut_HalfGlaze.png"
-dest_files=["res://.godot/imported/chocolate_donut_HalfGlaze.png-311791abc6a1755d2465e54e62920680.s3tc.ctex", "res://.godot/imported/chocolate_donut_HalfGlaze.png-311791abc6a1755d2465e54e62920680.etc2.ctex"]
+source_file="res://models/pink_donut_cut_HalfDonut.png"
+dest_files=["res://.godot/imported/pink_donut_cut_HalfDonut.png-d90de35da13536419312db5dac9089aa.s3tc.ctex", "res://.godot/imported/pink_donut_cut_HalfDonut.png-d90de35da13536419312db5dac9089aa.etc2.ctex"]
 
 [params]
 
