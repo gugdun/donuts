@@ -5,8 +5,8 @@
 
 [sub_resource type="ImmediateMesh" id="ImmediateMesh_aiw44"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_ksfn8"]
-radius = 0.0104801
+[sub_resource type="SphereShape3D" id="SphereShape3D_8di58"]
+radius = 0.025
 
 [node name="staticbody" type="StaticBody3D" node_paths=PackedStringArray("mesh_instance", "collider")]
 script = ExtResource("1_6m7tu")
@@ -21,4 +21,4 @@ cast_shadow = 0
 mesh = SubResource("ImmediateMesh_aiw44")
 
 [node name="shape" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_ksfn8")
+shape = SubResource("SphereShape3D_8di58")

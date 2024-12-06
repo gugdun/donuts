@@ -61,8 +61,7 @@ spawners = [NodePath("../spawner")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 default_donuts = Array[PackedScene]([ExtResource("6_i0elt"), ExtResource("4_wa7g3"), ExtResource("5_l268r")])
 
-[node name="trail" parent="scene" node_paths=PackedStringArray("game") instance=ExtResource("3_nnxak")]
-game = NodePath("../..")
+[node name="trail" parent="scene" instance=ExtResource("3_nnxak")]
 
 [node name="destroyer" parent="scene" instance=ExtResource("4_pxjyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)

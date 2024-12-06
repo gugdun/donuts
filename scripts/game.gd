@@ -25,6 +25,8 @@ func _process(delta: float) -> void:
 	if timeout >= pop_timeout and !points.is_empty():
 		points.pop_front()
 		timeout = 0
+
+func _physics_process(_delta: float) -> void:
 	trail.update(points, pressed)
 
 func _input(event: InputEvent) -> void:
