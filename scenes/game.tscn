@@ -10,17 +10,17 @@
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="6_3ugvf"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="6_8jga8"]
 [ext_resource type="PackedScene" uid="uid://c68xoboemdf7w" path="res://scenes/donuts/pink_donut.tscn" id="6_i0elt"]
-[ext_resource type="PackedScene" path="res://scenes/hp_container.tscn" id="6_n65nv"]
+[ext_resource type="PackedScene" uid="uid://bhyqrm80u08wx" path="res://scenes/hp_container.tscn" id="6_n65nv"]
 [ext_resource type="PackedScene" uid="uid://bviyripn8ebbq" path="res://scenes/health_point.tscn" id="7_5yfvh"]
 [ext_resource type="Script" path="res://scripts/best_score_label.gd" id="7_n82gt"]
 [ext_resource type="Script" path="res://scripts/reset_button.gd" id="8_2bbsm"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c6ap1"]
-sky_top_color = Color(0.534663, 0.685574, 0.94765, 1)
-sky_horizon_color = Color(1, 0.807843, 1, 1)
+sky_top_color = Color(0.60287, 0.73308, 0.957591, 1)
+sky_horizon_color = Color(1, 0.860764, 0.999121, 1)
 sky_curve = 4.326
-ground_bottom_color = Color(0.578204, 0.412497, 0.574218, 1)
-ground_horizon_color = Color(1, 0.807843, 1, 1)
+ground_bottom_color = Color(0.656343, 0.487137, 0.651735, 1)
+ground_horizon_color = Color(1, 0.858824, 1, 1)
 ground_curve = 2.38856
 
 [sub_resource type="Sky" id="Sky_m31dt"]

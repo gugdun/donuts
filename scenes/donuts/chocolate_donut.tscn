@@ -23,9 +23,11 @@ transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-0
 
 [node name="chocolate_donut_cut" parent="." instance=ExtResource("4_70g7m")]
 transform = Transform3D(0.05, 0, 0, 0, -2.18557e-09, -0.05, 0, 0.05, -2.18557e-09, 0, 0, 0)
+visible = false
 
 [node name="chocolate_donut_cut2" parent="." instance=ExtResource("4_70g7m")]
 transform = Transform3D(-0.05, -4.37114e-09, -1.91069e-16, 0, -2.18557e-09, 0.05, -4.37114e-09, 0.05, 2.18557e-09, 0, 0, 0)
+visible = false
 
 [node name="area" type="Area3D" parent="."]
 

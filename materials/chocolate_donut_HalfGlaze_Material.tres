@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://dvvgg8yor3pw"]
+
+[ext_resource type="Texture2D" uid="uid://do6cchxdk2hf0" path="res://models/chocolate_donut_cut_Glaze_Texture.png" id="1_b38ry"]
+[ext_resource type="Material" uid="uid://b1xlutag18btq" path="res://materials/outline.tres" id="2_qwloe"]
+
+[resource]
+resource_name = "HalfGlaze_Material"
+next_pass = ExtResource("2_qwloe")
+cull_mode = 2
+albedo_texture = ExtResource("1_b38ry")

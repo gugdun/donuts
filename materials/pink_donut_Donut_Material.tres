@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://hw3v0cf5b5n6"]
+
+[ext_resource type="Texture2D" uid="uid://bp7ajyw0sbl3c" path="res://models/pink_donut_Donut_Texture.png" id="1_05nqc"]
+[ext_resource type="Material" uid="uid://b1xlutag18btq" path="res://materials/outline.tres" id="2_6mm8s"]
+
+[resource]
+resource_name = "Donut_Material"
+next_pass = ExtResource("2_6mm8s")
+cull_mode = 2
+albedo_texture = ExtResource("1_05nqc")

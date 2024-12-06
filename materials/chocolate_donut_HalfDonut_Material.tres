@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bgcghc0gocb53"]
+
+[ext_resource type="Texture2D" uid="uid://w64ypwthy7xy" path="res://models/chocolate_donut_cut_HalfDonut.png" id="1_apom3"]
+[ext_resource type="Material" uid="uid://b1xlutag18btq" path="res://materials/outline.tres" id="2_jh41d"]
+
+[resource]
+resource_name = "HalfDonut_Material"
+next_pass = ExtResource("2_jh41d")
+cull_mode = 2
+albedo_texture = ExtResource("1_apom3")
