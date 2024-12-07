@@ -6,16 +6,17 @@ extends StaticBody3D
 @export var head_width: float = 0.01
 @export var mesh_instance: MeshInstance3D
 @export var collider: CollisionShape3D
-@export var game: Game
-
-@onready var _m: ImmediateMesh = mesh_instance.mesh as ImmediateMesh
 
 var _dir: Vector3
+
+func _ready() -> void:
+	mesh_instance.mesh = ImmediateMesh.new()
 
 func get_dir() -> Vector3:
 	return _dir
 
 func update(points: Array, pressed: bool) -> void:
+	var _m: ImmediateMesh = mesh_instance.mesh as ImmediateMesh
 	_m.clear_surfaces()
 
 	var size: int = points.size()
@@ -88,7 +89,7 @@ func update(points: Array, pressed: bool) -> void:
 
 	_m.surface_end()
 
-	# Move collider
-	collider.position = points[size-1]
+	# Update collider
+	collider.global_position = points[size-1]
 	collider.disabled = !pressed
 	_dir = dir
