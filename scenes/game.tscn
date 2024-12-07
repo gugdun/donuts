@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://kukr7yuoefbq"]
+[gd_scene load_steps=19 format=3 uid="uid://kukr7yuoefbq"]
 
 [ext_resource type="PackedScene" uid="uid://dl5miopsl5xpv" path="res://scenes/spawner.tscn" id="1_aygvt"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ybh72"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://bviyripn8ebbq" path="res://scenes/health_point.tscn" id="7_5yfvh"]
 [ext_resource type="Script" path="res://scripts/best_score_label.gd" id="7_n82gt"]
 [ext_resource type="Script" path="res://scripts/reset_button.gd" id="8_2bbsm"]
+[ext_resource type="PackedScene" uid="uid://da4q7tebwwmn4" path="res://scenes/game_over_container.tscn" id="15_y4aio"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c6ap1"]
 sky_top_color = Color(0.534663, 0.685574, 0.94765, 1)
@@ -204,9 +205,14 @@ offset_bottom = 178.0
 text = "Start"
 script = ExtResource("6_8jga8")
 
+[node name="game_over_container" parent="." instance=ExtResource("15_y4aio")]
+visible = false
+
 [connection signal="donut_destroyed" from="scene/destroyer" to="game_menu/hp_container" method="decrease_health"]
 [connection signal="pressed" from="game_menu/reset_button" to="game_menu/reset_button" method="do_reset"]
 [connection signal="pressed" from="game_menu/menu_button" to="." method="_open_menu"]
 [connection signal="pressed" from="game_menu/pause_button" to="." method="_pause_game"]
 [connection signal="you_died" from="game_menu/hp_container" to="." method="game_over"]
 [connection signal="pressed" from="main_menu/start_button" to="." method="_start_game"]
+[connection signal="menu" from="game_over_container" to="." method="_open_menu"]
+[connection signal="restart" from="game_over_container" to="." method="_start_game"]

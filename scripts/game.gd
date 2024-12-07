@@ -50,20 +50,6 @@ func _input(event: InputEvent) -> void:
 		points[event.index].append(projected)
 		if points[event.index].size() > max_points:
 			points[event.index].pop_front()
-	# elif event is InputEventMouseButton:
-	# 	if event.is_pressed():
-	# 		pressed[0] = true
-	# 		var projected: Vector3 = camera.project_position(event.position, 1)
-	# 		points[0].append(projected)
-	# 	elif event.is_released():
-	# 		pressed[0] = false
-	# elif event is InputEventMouseMotion:
-	# 	if !pressed[0]:
-	# 		return
-	# 	var projected: Vector3 = camera.project_position(event.position, 1)
-	# 	points[0].append(projected)
-	# 	if points[0].size() > max_points:
-	# 		points[0].pop_front()
 
 func _on_reset():
 	GameState.set_state(GameState.State.PLAYING)
@@ -72,6 +58,7 @@ func _on_reset():
 
 func _start_game() -> void:
 	$main_menu.visible = false
+	$game_over_container.visible = false
 	reset_button.do_reset()
 
 func _pause_game() -> void:
@@ -86,8 +73,10 @@ func _open_menu() -> void:
 	GameState.set_state(GameState.State.IDLE)
 	$main_menu.visible = true
 	pause_button.disabled = false
+	$game_over_container.visible = false
 
 func game_over() -> void:
 	GameState.set_state(GameState.State.GAME_OVER)
 	get_tree().paused = true
 	pause_button.disabled = true
+	$game_over_container.visible = true
