@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://c68xoboemdf7w"]
+[gd_scene load_steps=6 format=3 uid="uid://c68xoboemdf7w"]
 
 [ext_resource type="Script" path="res://scripts/donut.gd" id="1_3rdtm"]
 [ext_resource type="Shape3D" uid="uid://cid4s6r28pxv5" path="res://colliders/donut_collider.tres" id="3_1jhbg"]
 [ext_resource type="PackedScene" uid="uid://bgqn8m73os3cy" path="res://models/pink_donut.glb" id="3_bt6lp"]
 [ext_resource type="PackedScene" uid="uid://b2q7dlt3et5ku" path="res://models/pink_donut_cut.glb" id="4_w4wsq"]
+[ext_resource type="AudioStream" uid="uid://um102hfp0mju" path="res://Sounds/slice_sound2.wav" id="5_s5g5a"]
 
 [node name="rigidbody" type="RigidBody3D" node_paths=PackedStringArray("donut", "left_half", "right_half")]
 contact_monitor = true
@@ -34,5 +35,10 @@ visible = false
 [node name="shape" type="CollisionShape3D" parent="area"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = ExtResource("3_1jhbg")
+
+[node name="slice_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_s5g5a")
+volume_db = -15.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="area" to="." method="body_entered"]
