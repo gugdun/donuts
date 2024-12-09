@@ -32,7 +32,7 @@ offset_right = 46.0
 offset_bottom = -13.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "Game Over"
+text = "game_over_label"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
@@ -51,7 +51,7 @@ offset_right = 46.0
 offset_bottom = 50.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Restart"
+text = "restart_button"
 
 [node name="menu_button" type="Button" parent="."]
 process_mode = 3
@@ -67,7 +67,7 @@ offset_right = 46.0
 offset_bottom = 114.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Menu"
+text = "menu_button"
 
 [connection signal="pressed" from="restart_button" to="." method="_on_restart"]
 [connection signal="pressed" from="menu_button" to="." method="_on_menu"]
