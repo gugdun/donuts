@@ -13,7 +13,9 @@ func _spawn_donut(donut: Donut) -> void:
 	add_child(donut)
 	donut.global_position = global_position
 	donut.set_spawner(self)
-	donut.apply_force(Vector3.UP * force + rand)
+	# donut.apply_force(Vector3.UP * force + rand) 
+	# Donuts on the edges (spawners 0 and 8), fly off the edge of the screen, so I've removed the angle for now
+	donut.apply_force(Vector3.UP * force)
 	
 func spawn_default_donut() -> void:
 	var d: Donut = default_donuts.pick_random().instantiate()

@@ -21,6 +21,7 @@ config/icon="res://textures/ui/icon.svg"
 GameState="*res://scripts/game_state.gd"
 Score="*res://scripts/score.gd"
 BestScore="*res://scripts/best_score.gd"
+ScheduleSingleton="*res://singletons/schedule_singleton.gd"
 
 [display]
 

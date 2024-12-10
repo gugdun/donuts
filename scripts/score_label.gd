@@ -6,5 +6,4 @@ func _ready():
 	Score.connect("score_reseted", Callable(self, "update_label"))
 	
 func update_label(_amount: int):
-	print("updated score")
 	text = "Score: " + str(Score.score)
