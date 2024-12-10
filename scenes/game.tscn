@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dl5miopsl5xpv" path="res://scenes/spawner.tscn" id="1_aygvt"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ybh72"]
-[ext_resource type="PackedScene" uid="uid://bolda1q4ebxdl" path="res://scenes/scheduler.tscn" id="2_c5t7g"]
+[ext_resource type="PackedScene" path="res://scenes/scheduler.tscn" id="2_c5t7g"]
 [ext_resource type="PackedScene" uid="uid://dyldi8104486i" path="res://scenes/trail.tscn" id="3_nnxak"]
 [ext_resource type="PackedScene" uid="uid://dmhnak5hwtqcb" path="res://scenes/destroyer.tscn" id="4_pxjyh"]
 [ext_resource type="PackedScene" uid="uid://cebplxkxfurxq" path="res://scenes/donuts/chocolate_donut.tscn" id="4_wa7g3"]
@@ -55,10 +55,42 @@ fov = 60.0
 
 [node name="scheduler" parent="scene" node_paths=PackedStringArray("spawners") instance=ExtResource("2_c5t7g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 1)
-spawners = [NodePath("../spawner")]
+spawners = [NodePath("spawner_0"), NodePath("spawner_1"), NodePath("spawner_2"), NodePath("spawner_3"), NodePath("spawner_4"), NodePath("spawner_5"), NodePath("spawner_6"), NodePath("spawner_7"), NodePath("spawner_8")]
 
-[node name="spawner" parent="scene" instance=ExtResource("1_aygvt")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+[node name="spawner_0" parent="scene/scheduler" instance=ExtResource("1_aygvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, -1)
+default_donuts = Array[PackedScene]([ExtResource("6_i0elt"), ExtResource("4_wa7g3"), ExtResource("5_l268r")])
+
+[node name="spawner_1" parent="scene/scheduler" instance=ExtResource("1_aygvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6, 0, -1)
+default_donuts = Array[PackedScene]([ExtResource("6_i0elt"), ExtResource("4_wa7g3"), ExtResource("5_l268r")])
+
+[node name="spawner_2" parent="scene/scheduler" instance=ExtResource("1_aygvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, -1)
+default_donuts = Array[PackedScene]([ExtResource("6_i0elt"), ExtResource("4_wa7g3"), ExtResource("5_l268r")])
+
+[node name="spawner_3" parent="scene/scheduler" instance=ExtResource("1_aygvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0, -1)
+default_donuts = Array[PackedScene]([ExtResource("6_i0elt"), ExtResource("4_wa7g3"), ExtResource("5_l268r")])
+
+[node name="spawner_4" parent="scene/scheduler" instance=ExtResource("1_aygvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
+default_donuts = Array[PackedScene]([ExtResource("6_i0elt"), ExtResource("4_wa7g3"), ExtResource("5_l268r")])
+
+[node name="spawner_5" parent="scene/scheduler" instance=ExtResource("1_aygvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.2, 0, -1)
+default_donuts = Array[PackedScene]([ExtResource("6_i0elt"), ExtResource("4_wa7g3"), ExtResource("5_l268r")])
+
+[node name="spawner_6" parent="scene/scheduler" instance=ExtResource("1_aygvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4, 0, -1)
+default_donuts = Array[PackedScene]([ExtResource("6_i0elt"), ExtResource("4_wa7g3"), ExtResource("5_l268r")])
+
+[node name="spawner_7" parent="scene/scheduler" instance=ExtResource("1_aygvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6, 0, -1)
+default_donuts = Array[PackedScene]([ExtResource("6_i0elt"), ExtResource("4_wa7g3"), ExtResource("5_l268r")])
+
+[node name="spawner_8" parent="scene/scheduler" instance=ExtResource("1_aygvt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8, 0, -1)
 default_donuts = Array[PackedScene]([ExtResource("6_i0elt"), ExtResource("4_wa7g3"), ExtResource("5_l268r")])
 
 [node name="trail" parent="scene" node_paths=PackedStringArray("game") instance=ExtResource("3_nnxak")]
