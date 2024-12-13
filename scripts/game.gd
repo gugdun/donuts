@@ -77,6 +77,8 @@ func _pause_game() -> void:
 		get_tree().paused = true
 	
 func _open_menu() -> void:
+	reset_button.do_reset()
+	get_tree().paused = true
 	background_music.stop()
 	button_click_sound.play()
 	GameState.set_state(GameState.State.IDLE)
