@@ -10,19 +10,20 @@
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="6_3ugvf"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="6_8jga8"]
 [ext_resource type="PackedScene" uid="uid://c68xoboemdf7w" path="res://scenes/donuts/pink_donut.tscn" id="6_i0elt"]
-[ext_resource type="PackedScene" uid="uid://bhyqrm80u08wx" path="res://scenes/hp_container.tscn" id="6_n65nv"]
+[ext_resource type="PackedScene" path="res://scenes/hp_container.tscn" id="6_n65nv"]
 [ext_resource type="PackedScene" uid="uid://bviyripn8ebbq" path="res://scenes/health_point.tscn" id="7_5yfvh"]
 [ext_resource type="Script" path="res://scripts/best_score_label.gd" id="7_n82gt"]
 [ext_resource type="Script" path="res://scripts/reset_button.gd" id="8_2bbsm"]
 [ext_resource type="AudioStream" uid="uid://bdm83gqdpqec4" path="res://Sounds/button_click_sound.wav" id="15_fa3ur"]
 [ext_resource type="AudioStream" uid="uid://dvo25cg5jfs30" path="res://Sounds/background_music.wav" id="16_8pvmp"]
+[ext_resource type="PackedScene" uid="uid://da4q7tebwwmn4" path="res://scenes/game_over_container.tscn" id="15_y4aio"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c6ap1"]
-sky_top_color = Color(0.60287, 0.73308, 0.957591, 1)
-sky_horizon_color = Color(1, 0.860764, 0.999121, 1)
+sky_top_color = Color(0.534663, 0.685574, 0.94765, 1)
+sky_horizon_color = Color(1, 0.807843, 1, 1)
 sky_curve = 4.326
-ground_bottom_color = Color(0.656343, 0.487137, 0.651735, 1)
-ground_horizon_color = Color(1, 0.858824, 1, 1)
+ground_bottom_color = Color(0.578204, 0.412497, 0.574218, 1)
+ground_horizon_color = Color(1, 0.807843, 1, 1)
 ground_curve = 2.38856
 
 [sub_resource type="Sky" id="Sky_m31dt"]
@@ -32,11 +33,11 @@ sky_material = SubResource("ProceduralSkyMaterial_c6ap1")
 background_mode = 2
 sky = SubResource("Sky_m31dt")
 
-[node name="game" type="Node3D" node_paths=PackedStringArray("camera", "trail", "health_bar", "reset_button", "pause_button")]
+[node name="game" type="Node3D" node_paths=PackedStringArray("camera", "trails", "health_bar", "reset_button", "pause_button")]
 script = ExtResource("1_ybh72")
 pop_timeout = 0.05
 camera = NodePath("environment/camera")
-trail = NodePath("scene/trail")
+trails = [NodePath("scene/trail1"), NodePath("scene/trail2"), NodePath("scene/trail3"), NodePath("scene/trail4"), NodePath("scene/trail5"), NodePath("scene/trail6"), NodePath("scene/trail7"), NodePath("scene/trail8")]
 health_bar = NodePath("game_menu/hp_container")
 reset_button = NodePath("game_menu/reset_button")
 pause_button = NodePath("game_menu/pause_button")
@@ -51,7 +52,9 @@ shadow_opacity = 0.5
 [node name="camera" type="Camera3D" parent="environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 environment = SubResource("Environment_k3ono")
+projection = 1
 fov = 60.0
+size = 1.1
 
 [node name="scene" type="Node3D" parent="."]
 
@@ -63,8 +66,22 @@ spawners = [NodePath("../spawner")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 default_donuts = Array[PackedScene]([ExtResource("6_i0elt"), ExtResource("4_wa7g3"), ExtResource("5_l268r")])
 
-[node name="trail" parent="scene" node_paths=PackedStringArray("game") instance=ExtResource("3_nnxak")]
-game = NodePath("../..")
+[node name="trail1" parent="scene" instance=ExtResource("3_nnxak")]
+
+[node name="trail2" parent="scene" instance=ExtResource("3_nnxak")]
+
+[node name="trail3" parent="scene" instance=ExtResource("3_nnxak")]
+
+[node name="trail4" parent="scene" instance=ExtResource("3_nnxak")]
+
+[node name="trail5" parent="scene" instance=ExtResource("3_nnxak")]
+
+[node name="trail6" parent="scene" instance=ExtResource("3_nnxak")]
+
+[node name="trail7" parent="scene" instance=ExtResource("3_nnxak")]
+
+[node name="trail8" parent="scene" instance=ExtResource("3_nnxak")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
 
 [node name="destroyer" parent="scene" instance=ExtResource("4_pxjyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.25, 0)
@@ -139,7 +156,6 @@ offset_bottom = 156.0
 text = "PAUSE"
 
 [node name="hp_container" parent="game_menu" instance=ExtResource("6_n65nv")]
-unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 0
 anchor_left = 0.0
@@ -202,9 +218,14 @@ stream = ExtResource("16_8pvmp")
 volume_db = -20.0
 bus = &"Music"
 
+[node name="game_over_container" parent="." instance=ExtResource("15_y4aio")]
+visible = false
+
 [connection signal="donut_destroyed" from="scene/destroyer" to="game_menu/hp_container" method="decrease_health"]
 [connection signal="pressed" from="game_menu/reset_button" to="game_menu/reset_button" method="do_reset"]
 [connection signal="pressed" from="game_menu/menu_button" to="." method="_open_menu"]
 [connection signal="pressed" from="game_menu/pause_button" to="." method="_pause_game"]
 [connection signal="you_died" from="game_menu/hp_container" to="." method="game_over"]
 [connection signal="pressed" from="main_menu/start_button" to="." method="_start_game"]
+[connection signal="menu" from="game_over_container" to="." method="_open_menu"]
+[connection signal="restart" from="game_over_container" to="." method="_start_game"]
