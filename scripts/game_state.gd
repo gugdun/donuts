@@ -11,7 +11,6 @@ func set_state(new_state):
 		var old_state = current_state
 		current_state = new_state
 		state_changed.emit(old_state, new_state)
-		print("State changed from ", old_state, " to ", new_state)
 
 func is_state(state):
 	return current_state == state
