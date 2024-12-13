@@ -6,6 +6,7 @@ extends RigidBody3D
 @export var left_half: Node3D
 @export var right_half: Node3D
 @export var shader_precompilation: bool = false
+@onready var slide_sound = $slice_sound
 
 const slice_force: float = 50
 
@@ -49,6 +50,8 @@ func _slice(trail: Trail):
 	new_donut.left_half.visible = false
 	new_donut.right_half.visible = true
 	new_donut.call_deferred("set_sliceable", false)
+	
+	slide_sound.play()
 
 	# Apply force to separate halfs
 	apply_force(trail.get_dir() * slice_force)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://bnb4lgqk50tai"]
+[gd_scene load_steps=6 format=3 uid="uid://bnb4lgqk50tai"]
 
 [ext_resource type="Script" path="res://scripts/donut.gd" id="1_c8sfq"]
 [ext_resource type="Shape3D" uid="uid://cid4s6r28pxv5" path="res://colliders/donut_collider.tres" id="2_08ult"]
 [ext_resource type="PackedScene" uid="uid://p0ujmb1w8jdb" path="res://models/red_donut_cut.glb" id="4_kclvj"]
+[ext_resource type="AudioStream" uid="uid://cd2k4l3boi7hq" path="res://Sounds/slice_sound3.wav" id="5_kiiyu"]
 [ext_resource type="PackedScene" uid="uid://b4ri4ysdekw3q" path="res://models/red_donut.glb" id="5_sa3d3"]
 
 [node name="rigidbody" type="RigidBody3D" node_paths=PackedStringArray("donut", "left_half", "right_half")]
@@ -34,5 +35,10 @@ visible = false
 [node name="shape" type="CollisionShape3D" parent="area"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 shape = ExtResource("2_08ult")
+
+[node name="slice_sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_kiiyu")
+volume_db = -13.0
+bus = &"Music"
 
 [connection signal="body_entered" from="area" to="." method="body_entered"]
