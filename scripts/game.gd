@@ -9,6 +9,8 @@ extends Node3D
 @export var health_bar: HealthBar
 @export var reset_button: ResetButton
 @export var pause_button: Button
+@onready var button_click_sound = $sound/button_click_sound
+@onready var background_music = $sound/background_music
 
 var pressed: Array[bool] = []
 var points: Array[Array] = []
@@ -52,24 +54,31 @@ func _input(event: InputEvent) -> void:
 			points[event.index].pop_front()
 
 func _on_reset():
+	button_click_sound.play()
 	GameState.set_state(GameState.State.PLAYING)
 	get_tree().paused = false
 	pause_button.disabled = false
 
 func _start_game() -> void:
+	background_music.play()
+	button_click_sound.play()
 	$main_menu.visible = false
 	$game_over_container.visible = false
 	reset_button.do_reset()
 
 func _pause_game() -> void:
+	button_click_sound.play()
 	if(GameState.current_state == GameState.State.PAUSED):
 		GameState.set_state(GameState.State.PLAYING)
 		get_tree().paused = false
 	else:
+		await button_click_sound.finished
 		GameState.set_state(GameState.State.PAUSED)
 		get_tree().paused = true
 	
 func _open_menu() -> void:
+	background_music.stop()
+	button_click_sound.play()
 	GameState.set_state(GameState.State.IDLE)
 	$main_menu.visible = true
 	pause_button.disabled = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://kukr7yuoefbq"]
+[gd_scene load_steps=20 format=3 uid="uid://kukr7yuoefbq"]
 
 [ext_resource type="PackedScene" uid="uid://dl5miopsl5xpv" path="res://scenes/spawner.tscn" id="1_aygvt"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ybh72"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://bviyripn8ebbq" path="res://scenes/health_point.tscn" id="7_5yfvh"]
 [ext_resource type="Script" path="res://scripts/best_score_label.gd" id="7_n82gt"]
 [ext_resource type="Script" path="res://scripts/reset_button.gd" id="8_2bbsm"]
+[ext_resource type="AudioStream" uid="uid://bdm83gqdpqec4" path="res://Sounds/button_click_sound.wav" id="15_fa3ur"]
+[ext_resource type="AudioStream" uid="uid://dvo25cg5jfs30" path="res://Sounds/background_music.wav" id="16_8pvmp"]
 [ext_resource type="PackedScene" uid="uid://da4q7tebwwmn4" path="res://scenes/game_over_container.tscn" id="15_y4aio"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c6ap1"]
@@ -204,6 +206,17 @@ offset_right = 213.0
 offset_bottom = 178.0
 text = "Start"
 script = ExtResource("6_8jga8")
+
+[node name="sound" type="Node" parent="."]
+
+[node name="button_click_sound" type="AudioStreamPlayer" parent="sound"]
+stream = ExtResource("15_fa3ur")
+volume_db = -5.0
+
+[node name="background_music" type="AudioStreamPlayer" parent="sound"]
+stream = ExtResource("16_8pvmp")
+volume_db = -20.0
+bus = &"Music"
 
 [node name="game_over_container" parent="." instance=ExtResource("15_y4aio")]
 visible = false
