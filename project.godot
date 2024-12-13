@@ -33,6 +33,10 @@ window/stretch/aspect="expand"
 
 pointing/emulate_touch_from_mouse=true
 
+[internationalization]
+
+locale/translations=PackedStringArray("res://translations/translations.en.translation", "res://translations/translations.ru.translation")
+
 [physics]
 
 3d/default_gravity=4.9
