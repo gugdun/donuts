@@ -1,0 +1,78 @@
+[gd_scene load_steps=2 format=3 uid="uid://r72xe0ayj60m"]
+
+[ext_resource type="Script" path="res://scripts/confirmation_modal.gd" id="1_oldkq"]
+
+[node name="confirmation_modal" type="Control"]
+layout_mode = 3
+anchor_left = 0.494
+anchor_top = 0.498
+anchor_right = 0.494
+anchor_bottom = 0.498
+offset_left = -291.088
+offset_top = -129.704
+offset_right = 283.912
+offset_bottom = 116.296
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_oldkq")
+
+[node name="background_panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="confirmation_modal_label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -168.0
+offset_right = 168.0
+offset_bottom = 59.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 33
+text = "Confirm Action"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="yes_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 67.0
+offset_top = -66.0
+offset_right = 187.0
+offset_bottom = -16.0
+grow_vertical = 0
+text = "Yes"
+
+[node name="no_button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -171.0
+offset_top = -66.0
+offset_right = -51.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "No"
+
+[node name="confirmation_info_label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 34.0
+offset_top = 60.0
+offset_right = 536.0
+offset_bottom = 165.0
+horizontal_alignment = 1
+
+[connection signal="pressed" from="yes_button" to="." method="_confirm"]
+[connection signal="pressed" from="no_button" to="." method="_reject"]

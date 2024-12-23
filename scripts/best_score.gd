@@ -40,6 +40,11 @@ func save_best_score() -> void:
 	config.set_value(section, key, best_score)
 	config.save(cfg_path)
 
+func reset_best_score() -> void:
+	best_score = 0
+	save_best_score()
+	best_score_incremented.emit(0)
+
 #func update_score_label() -> void:
 	#$"../score_label".text = "Best score: " + str(best_score)
 

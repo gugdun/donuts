@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://kukr7yuoefbq"]
+[gd_scene load_steps=20 format=3 uid="uid://kukr7yuoefbq"]
 
 [ext_resource type="PackedScene" uid="uid://dl5miopsl5xpv" path="res://scenes/spawner.tscn" id="1_aygvt"]
 [ext_resource type="Script" path="res://scripts/game.gd" id="1_ybh72"]
@@ -10,10 +10,11 @@
 [ext_resource type="Script" path="res://scripts/score_label.gd" id="6_3ugvf"]
 [ext_resource type="Script" path="res://scripts/game_state.gd" id="6_8jga8"]
 [ext_resource type="PackedScene" uid="uid://c68xoboemdf7w" path="res://scenes/donuts/pink_donut.tscn" id="6_i0elt"]
-[ext_resource type="PackedScene" path="res://scenes/hp_container.tscn" id="6_n65nv"]
+[ext_resource type="PackedScene" uid="uid://bhyqrm80u08wx" path="res://scenes/hp_container.tscn" id="6_n65nv"]
 [ext_resource type="PackedScene" uid="uid://bviyripn8ebbq" path="res://scenes/health_point.tscn" id="7_5yfvh"]
 [ext_resource type="Script" path="res://scripts/best_score_label.gd" id="7_n82gt"]
 [ext_resource type="Script" path="res://scripts/reset_button.gd" id="8_2bbsm"]
+[ext_resource type="PackedScene" uid="uid://br0iv1v8wcfkr" path="res://scenes/settings_screen.tscn" id="15_81c7e"]
 [ext_resource type="PackedScene" uid="uid://da4q7tebwwmn4" path="res://scenes/game_over_container.tscn" id="15_y4aio"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_c6ap1"]
@@ -205,6 +206,19 @@ offset_bottom = 178.0
 text = "Start"
 script = ExtResource("6_8jga8")
 
+[node name="settings_button" type="Button" parent="main_menu"]
+process_mode = 3
+layout_mode = 0
+offset_left = 69.0
+offset_top = 200.0
+offset_right = 213.0
+offset_bottom = 278.0
+text = "Settings"
+
+[node name="settings_screen" parent="main_menu" instance=ExtResource("15_81c7e")]
+visible = false
+layout_mode = 1
+
 [node name="game_over_container" parent="." instance=ExtResource("15_y4aio")]
 visible = false
 
@@ -214,5 +228,9 @@ visible = false
 [connection signal="pressed" from="game_menu/pause_button" to="." method="_pause_game"]
 [connection signal="you_died" from="game_menu/hp_container" to="." method="game_over"]
 [connection signal="pressed" from="main_menu/start_button" to="." method="_start_game"]
+[connection signal="pressed" from="main_menu/settings_button" to="." method="_open_settings_screen"]
+[connection signal="back_to_menu" from="main_menu/settings_screen" to="." method="_back_to_menu"]
+[connection signal="change_language" from="main_menu/settings_screen" to="." method="_change_language"]
+[connection signal="reset_best_score" from="main_menu/settings_screen" to="." method="_reset_best_score"]
 [connection signal="menu" from="game_over_container" to="." method="_open_menu"]
 [connection signal="restart" from="game_over_container" to="." method="_start_game"]

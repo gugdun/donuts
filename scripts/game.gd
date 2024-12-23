@@ -13,6 +13,7 @@ extends Node3D
 var pressed: Array[bool] = []
 var points: Array[Array] = []
 var timeout: Array[float] = []
+var locales = {"English" : "en", "Russian" : "ru"}
 
 func _ready() -> void:
 	for i in trails.size():
@@ -80,3 +81,17 @@ func game_over() -> void:
 	get_tree().paused = true
 	pause_button.disabled = true
 	$game_over_container.visible = true
+
+func _open_settings_screen():
+	$main_menu/settings_screen.visible = true
+
+
+func _back_to_menu():
+	$main_menu/settings_screen.visible = false
+
+func _change_language(language_label):
+	TranslationServer.set_locale(locales.get(language_label))
+	print(TranslationServer.get_locale())
+
+func _reset_best_score():
+	BestScore.reset_best_score()
